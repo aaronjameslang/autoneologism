@@ -1,0 +1,15 @@
+{
+  "name": "markov-chain-word-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/** | faucet"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "tape": "^4.6.0"
+  }
+}
