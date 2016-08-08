@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "format": "standard-format --write",
     "test": "tape test/**/*.js | faucet",
     "test-debug": "tape test/**/*.js"
   },
@@ -11,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "faucet": "0.0.1",
+    "standard-format": "^2.2.2",
     "tape": "^4.6.0"
   }
 }
