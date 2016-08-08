@@ -1,6 +1,36 @@
 module.exports = {
   calculateArrayOfPotentialLetters: calculateArrayOfPotentialLetters,
-  generateNextLetterFromArray: generateNextLetterFromArray
+  generateNextLetterFromArray: generateNextLetterFromArray,
+  generateNextLetter: generateNextLetter,
+  generateWord: generateWord
+}
+
+function generateNextLetter (word, memoir, random) {
+  switch (word.length) {
+    case 0:
+      var submemoir = memoir['START']['START']
+      break
+    case 1:
+      var submemoir = memoir['START'][word[word.length - 1]]
+      break
+    default:
+      var submemoir = memoir[word[word.length - 2]][word[word.length - 1]]
+      break
+  }
+
+  var array = calculateArrayOfPotentialLetters(submemoir)
+  var letter = generateNextLetterFromArray(array, random)
+  return letter
+}
+
+function generateWord (memoir, random) {
+  var word = ''
+  var letter = ''
+  while (letter != 'END') {
+    word += letter
+    letter = generateNextLetter(word, memoir, random)
+  }
+  return word
 }
 
 function calculateArrayOfPotentialLetters (submemoir) {
