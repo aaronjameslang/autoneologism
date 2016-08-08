@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/** | faucet"
+    "test": "tape test/**/*.js | faucet",
+    "test-debug": "tape test/**/*.js"
   },
   "author": "",
   "license": "ISC",
