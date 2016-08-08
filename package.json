@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "format": "standard-format --write",
-    "test": "tape test/**/*.js | faucet",
-    "test-debug": "tape test/**/*.js"
+    "test": "tape test/*.js test/**/*.js | faucet",
+    "test-debug": "tape test/*.js test/**/*.js"
   },
   "author": "",
   "license": "ISC",

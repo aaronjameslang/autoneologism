@@ -1,8 +1,8 @@
 let test = require('tape')
 let fs = require('fs')
 
-let digestWord = require('../src/digest').digestWord
-let generateWord = require('../src/generate').generateWord
+let digestWord = require('../../src/digest').digestWord
+let generateWord = require('../../src/generate').generateWord
 
 let wordsIn = String(fs.readFileSync(__dirname + '/hobbit.txt')).toLowerCase().split(' ')
 let memoir = JSON.parse(String(fs.readFileSync(__dirname + '/hobbit-memoir.json')))
