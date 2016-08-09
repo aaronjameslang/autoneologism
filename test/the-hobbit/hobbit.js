@@ -2,9 +2,9 @@ let test = require('tape')
 let fs = require('fs')
 
 let digestWord = require('../../src/digest').digestWord
+let generateMemoirFromText = require('../../src/generate').generateMemoirFromText
 let generateWord = require('../../src/generate').generateWord
 
-let wordsIn = String(fs.readFileSync(__dirname + '/hobbit.txt')).toLowerCase().split(' ')
 let memoir = JSON.parse(String(fs.readFileSync(__dirname + '/hobbit-memoir.json')))
 let wordsOut = JSON.parse(String(fs.readFileSync(__dirname + '/hobbit-words-out.json')))
 
@@ -15,10 +15,8 @@ function random () {
 }
 
 test('hobbit digestWord', function (t) {
-  var actualMemoir = {}
-  wordsIn.forEach(function (word) {
-    digestWord(actualMemoir, word)
-  })
+  const text = String(fs.readFileSync(__dirname + '/hobbit.txt'))
+  const actualMemoir = generateMemoirFromText(text)
   t.deepEqual(actualMemoir, memoir)
   t.end()
 })

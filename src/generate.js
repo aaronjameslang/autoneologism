@@ -1,8 +1,43 @@
+let digestWord = require('./digest').digestWord
+
 module.exports = {
   calculateArrayOfPotentialLetters: calculateArrayOfPotentialLetters,
   generateNextLetterFromArray: generateNextLetterFromArray,
   generateNextLetter: generateNextLetter,
-  generateWord: generateWord
+  generateWord: generateWord,
+  generateMemoirFromText: generateMemoirFromText
+}
+
+function generateWordsFromText (text, number) {
+  let wordsIn = generateWordsInFromText(text)
+  return generateWordsFromWords(wordsIn, number)
+}
+
+function generateWordsInFromText (text) {
+  return text.toLowerCase().split(' ')
+}
+
+function generateWordsFromWords (wordsIn, number) {
+  let memoir = generateMemoirFromWords(wordsIn)
+  let wordsOut = []
+  for (const i of Array(number).keys) {
+    const word = generateWord(memoir, Math.random)
+    wordsOut.push(word)
+  }
+  return wordsOut
+}
+
+function generateMemoirFromText (text) {
+  let wordsIn = generateWordsInFromText(text)
+  return generateMemoirFromWords(wordsIn)
+}
+
+function generateMemoirFromWords (wordsIn) {
+  let memoir = {}
+  wordsIn.forEach(function (word) {
+    digestWord(memoir, word)
+  })
+  return memoir
 }
 
 function generateNextLetter (word, memoir, random) {
