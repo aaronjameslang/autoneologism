@@ -54,7 +54,7 @@ var fixtures = [
 function testDigest (expectedMemoir, words, linkLength, memoir, t) {
   t.plan(1)
   memoir = memoir || {}
-  if (!memoir) throw new Error
+  if (!memoir) throw new Error()
   words.forEach(function (word) {
     digestWord(memoir, word)
   })

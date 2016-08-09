@@ -11,10 +11,10 @@ function generateNextLetter (word, memoir, random) {
       var submemoir = memoir['START']['START']
       break
     case 1:
-      var submemoir = memoir['START'][word[word.length - 1]]
+      submemoir = memoir['START'][word[word.length - 1]]
       break
     default:
-      var submemoir = memoir[word[word.length - 2]][word[word.length - 1]]
+      submemoir = memoir[word[word.length - 2]][word[word.length - 1]]
       break
   }
 
@@ -26,7 +26,7 @@ function generateNextLetter (word, memoir, random) {
 function generateWord (memoir, random) {
   var word = ''
   var letter = ''
-  while (letter != 'END') {
+  while (letter !== 'END') {
     word += letter
     letter = generateNextLetter(word, memoir, random)
   }
@@ -35,7 +35,7 @@ function generateWord (memoir, random) {
 
 function calculateArrayOfPotentialLetters (submemoir) {
   var array = []
-  for (letter in submemoir) {
+  for (const letter in submemoir) {
     let weight = submemoir[letter]
     for (let i = 0; i < weight; i += 1) {
       array.push(letter)

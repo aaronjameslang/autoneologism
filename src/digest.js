@@ -7,8 +7,8 @@ module.exports = {
  * @param word String
  */
 function digestWord (memoir, word) {
-  if (!memoir) throw new Error
-  if (!word) throw new Error
+  if (!memoir) throw new Error()
+  if (!word) throw new Error()
   var link = ['START', 'START', 'START']
   for (let i = 0; i < word.length; i += 1) {
     let letter = word[i]
@@ -28,7 +28,7 @@ function digestWord (memoir, word) {
  * @param link array
  */
 function incrementSubmemoir (memoir, link) {
-  if (!memoir) throw new Error
+  if (!memoir) throw new Error()
   let submemoir = memoir
   link.forEach(function (linkLetter, index) {
     if (index === link.length - 1) {
@@ -38,7 +38,7 @@ function incrementSubmemoir (memoir, link) {
       submemoir[linkLetter] = {}
     }
     submemoir = submemoir[linkLetter]
-  }.bind(this))
+  })
   submemoir[link[link.length - 1]] |= 0
   submemoir[link[link.length - 1]] += 1
 }
