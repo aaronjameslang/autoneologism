@@ -3,7 +3,7 @@ let fs = require('fs')
 
 let digestWord = require('../../src/digest').digestWord
 let generateMemoirFromText = require('../../src/generate').generateMemoirFromText
-let generateWord = require('../../src/generate').generateWord
+let generateWordsFromMemoir = require('../../src/generate').generateWordsFromMemoir
 
 let memoir = JSON.parse(String(fs.readFileSync(__dirname + '/hobbit-memoir.json')))
 let wordsOut = JSON.parse(String(fs.readFileSync(__dirname + '/hobbit-words-out.json')))
@@ -22,10 +22,7 @@ test('hobbit digestWord', function (t) {
 })
 
 test('hobbit generateWord', function (t) {
-  var actualWordsOut = []
-  for (let i = 0; i < 100; i += 1) {
-    actualWordsOut.push(generateWord(memoir, random))
-  }
+  var actualWordsOut = generateWordsFromMemoir(memoir, 100, random)
   t.deepEqual(actualWordsOut, wordsOut)
   t.end()
 })
