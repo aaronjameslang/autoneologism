@@ -6,7 +6,8 @@ module.exports = {
   generateNextLetter: generateNextLetter,
   generateWord: generateWord,
   generateMemoirFromText: generateMemoirFromText,
-  generateWordsFromMemoir: generateWordsFromMemoir
+  generateWordsFromMemoir: generateWordsFromMemoir,
+  generateWordsFromText: generateWordsFromText
 }
 
 function generateWordsFromText (text, number) {
@@ -15,7 +16,9 @@ function generateWordsFromText (text, number) {
 }
 
 function generateWordsInFromText (text) {
-  return text.toLowerCase().split(' ')
+  return text.toLowerCase().split(/[\s";.]/).filter(function(word) {
+    return !!word
+  })
 }
 
 function generateWordsFromMemoir (memoir, number, random) {
@@ -31,6 +34,7 @@ function generateWordsFromMemoir (memoir, number, random) {
 function generateWordsFromWords (wordsIn, number) {
   let memoir = generateMemoirFromWords(wordsIn)
   const wordsOut = generateWordsFromMemoir(memoir, number)
+  return wordsOut
 }
 
 function generateMemoirFromText (text) {
