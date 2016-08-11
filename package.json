@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "format": "standard-format --write",
-    "lint": "standard",
+    "lint": "standard --fix",
     "test": "tape test/*.js test/**/*.js | faucet",
     "test-debug": "tape test/*.js test/**/*.js"
   },
