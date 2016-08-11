@@ -10,9 +10,9 @@ module.exports = {
   generateWordsFromText: generateWordsFromText
 }
 
-function generateWordsFromText (text, number) {
+function generateWordsFromText (text, number, random) {
   let wordsIn = generateWordsInFromText(text)
-  return generateWordsFromWords(wordsIn, number)
+  return generateWordsFromWords(wordsIn, number, random)
 }
 
 function generateWordsInFromText (text) {
@@ -31,9 +31,9 @@ function generateWordsFromMemoir (memoir, number, random) {
   return wordsOut
 }
 
-function generateWordsFromWords (wordsIn, number) {
+function generateWordsFromWords (wordsIn, number, random) {
   let memoir = generateMemoirFromWords(wordsIn)
-  const wordsOut = generateWordsFromMemoir(memoir, number)
+  const wordsOut = generateWordsFromMemoir(memoir, number, random)
   return wordsOut
 }
 
