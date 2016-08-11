@@ -8,7 +8,7 @@ module.exports = {
  */
 function digestWord (memoir, word) {
   if (!memoir) throw new Error()
-  if (!word) throw new Error()
+  if (!word) throw new Error('Falsey word: ' + JSON.stringify(word))
   var link = ['START', 'START', 'START']
   for (let i = 0; i < word.length; i += 1) {
     let letter = word[i]
