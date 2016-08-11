@@ -9,14 +9,14 @@ const psuedoRandom = require('../_support/pseudo-random')()
 let memoir = JSON.parse(String(fs.readFileSync(__dirname + '/hobbit-memoir.json')))
 let wordsOut = JSON.parse(String(fs.readFileSync(__dirname + '/hobbit-words-out.json')))
 
-test('hobbit digestWord', function (t) {
+test('hobbit generateMemoirFromText', function (t) {
   const text = String(fs.readFileSync(__dirname + '/hobbit.txt'))
   const actualMemoir = generateMemoirFromText(text)
   t.deepEqual(actualMemoir, memoir)
   t.end()
 })
 
-test('hobbit generateWord', function (t) {
+test('hobbit generateWordsFromMemoir', function (t) {
   var actualWordsOut = generateWordsFromMemoir(memoir, 100, psuedoRandom)
   t.deepEqual(actualWordsOut, wordsOut)
   t.end()
