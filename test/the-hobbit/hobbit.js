@@ -1,7 +1,6 @@
 let test = require('tape')
 let fs = require('fs')
 
-let digestWord = require('../../src/digest').digestWord
 let generateMemoirFromText = require('../../src/generate').generateMemoirFromText
 let generateWordsFromMemoir = require('../../src/generate').generateWordsFromMemoir
 const psuedoRandom = require('../_support/pseudo-random')()
