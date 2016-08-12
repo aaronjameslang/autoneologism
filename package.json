@@ -1,7 +1,7 @@
 {
-  "name": "markov-chain-word-generator",
+  "name": "learning-word-generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "A word generator that teaches itself your phonotactics",
   "main": "index.js",
   "scripts": {
     "format": "standard-format --write",
@@ -9,8 +9,7 @@
     "test": "tape test/*.js test/**/*.js | faucet",
     "test-debug": "tape test/*.js test/**/*.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "aaronjameslang@googlemail.com",
   "devDependencies": {
     "faucet": "0.0.1",
     "standard": "^7.1.2",
