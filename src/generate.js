@@ -16,7 +16,7 @@ function generateWordsFromText (text, number, random) {
 }
 
 function generateWordsInFromText (text) {
-  return text.toLowerCase().split(/[^a-z'-]/).filter(function(word) {
+  return text.toLowerCase().split(/[^a-z'-]/).filter(function (word) {
     return !!word
   })
 }
