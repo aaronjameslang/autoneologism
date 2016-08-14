@@ -17,9 +17,7 @@ function generateWordsFromText (text, number, random) {
 }
 
 function generateWordsInFromText (text) {
-  let words = text.toLowerCase().split(/[^a-z'-]/).filter(function (word) {
-    return !!word
-  })
+  let words = text.toLowerCase().split(/[^a-z'-]/).filter(word => !!word)
   words = R.uniq(words)
   return words
 }
