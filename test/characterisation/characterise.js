@@ -2,10 +2,10 @@ const test = require('tape')
 const fs = require('fs')
 const path = require('path')
 
-console.log(__dirname);
-
-const generateMemoirFromText = require('../../src/generate').generateMemoirFromText
+const generateWordsInFromText = require('../../src/generate').generateWordsInFromText
 const generateWordsFromMemoir = require('../../src/generate').generateWordsFromMemoir
+const generateMemoirFromWords = require('../../src/generate').generateMemoirFromWords
+
 const psuedoRandom = require('../_support/pseudo-random')()
 
 const REGENERATE = false
@@ -17,16 +17,30 @@ fs.readdirSync(__dirname).forEach(textName => {
 })
 
 function processDirectory (textName) {
-  testGenerateMemoirFromText(textName)
+  testGenerateWordsInFromText(textName)
+  testGenerateMemoirFromWords(textName)
   testGenerateWordsFromMemoir(textName)
 }
 
-function testGenerateMemoirFromText (textName) {
-  test('characterise generateMemoirFromText ' + textName, function (t) {
+function testGenerateWordsInFromText (textName) {
+  test('characterise generateWordsInFromText ' + textName, function (t) {
     const textPath = path.join(__dirname, textName, 'text.txt')
-    const memoirPath = path.join(__dirname, textName, 'memoir.json')
+    const wordsInPath = path.join(__dirname, textName, 'words-in.json')
     const text = readTextFile(textPath)
-    const actualMemoir = generateMemoirFromText(text)
+    const actualWordsIn = generateWordsInFromText(text)
+    if (REGENERATE) writeJsonFile(wordsInPath, actualWordsIn)
+    const expectedWordsIn = readJsonFile(wordsInPath)
+    t.deepEqual(actualWordsIn, expectedWordsIn)
+    t.end()
+  })
+}
+
+function testGenerateMemoirFromWords (textName) {
+  test('characterise generateMemoirFromWords ' + textName, function (t) {
+    const wordsInPath = path.join(__dirname, textName, 'words-in.json')
+    const memoirPath = path.join(__dirname, textName, 'memoir.json')
+    const wordsIn = readJsonFile(wordsInPath)
+    const actualMemoir = generateMemoirFromWords(wordsIn)
     if (REGENERATE) writeJsonFile(memoirPath, actualMemoir)
     const expectedMemoir = readJsonFile(memoirPath)
     t.deepEqual(actualMemoir, expectedMemoir)

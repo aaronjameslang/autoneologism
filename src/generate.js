@@ -8,7 +8,9 @@ module.exports = {
   generateWord: generateWord,
   generateMemoirFromText: generateMemoirFromText,
   generateWordsFromMemoir: generateWordsFromMemoir,
-  generateWordsFromText: generateWordsFromText
+  generateWordsFromText: generateWordsFromText,
+  generateWordsInFromText: generateWordsInFromText,
+  generateMemoirFromWords: generateMemoirFromWords
 }
 
 function generateWordsFromText (text, number, random) {
