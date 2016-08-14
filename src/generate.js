@@ -1,4 +1,5 @@
 let digestWord = require('./digest').digestWord
+const R = require('ramda')
 
 module.exports = {
   calculateArrayOfPotentialLetters: calculateArrayOfPotentialLetters,
@@ -16,9 +17,11 @@ function generateWordsFromText (text, number, random) {
 }
 
 function generateWordsInFromText (text) {
-  return text.toLowerCase().split(/[^a-z'-]/).filter(function (word) {
+  let words = text.toLowerCase().split(/[^a-z'-]/).filter(function (word) {
     return !!word
   })
+  words = R.uniq(words)
+  return words
 }
 
 function generateWordsFromMemoir (memoir, number, random) {

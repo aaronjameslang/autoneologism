@@ -15,5 +15,8 @@
     "standard": "^7.1.2",
     "standard-format": "^2.2.2",
     "tape": "^4.6.0"
+  },
+  "dependencies": {
+    "ramda": "^0.22.1"
   }
 }
