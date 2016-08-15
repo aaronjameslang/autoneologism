@@ -2,9 +2,9 @@ const test = require('tape')
 const fs = require('fs')
 const path = require('path')
 
-const generateWordsInFromText = require('../../src/generate').generateWordsInFromText
-const generateWordsFromMemoir = require('../../src/generate').generateWordsFromMemoir
-const generateMemoirFromWords = require('../../src/generate').generateMemoirFromWords
+const generateWordsInFromText = require('../../index').generateWordsInFromText
+const generateWordsFromMemoir = require('../../index').generateWordsFromMemoir
+const generateMemoirFromWords = require('../../index').generateMemoirFromWords
 
 const PsuedoRandom = require('../_support/pseudo-random')
 

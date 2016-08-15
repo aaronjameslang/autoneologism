@@ -1,56 +1,10 @@
-let digestWord = require('./digest').digestWord
 const R = require('ramda')
 
 module.exports = {
   calculateArrayOfPotentialLetters: calculateArrayOfPotentialLetters,
   generateNextLetterFromArray: generateNextLetterFromArray,
   generateNextLetter: generateNextLetter,
-  generateWord: generateWord,
-  generateMemoirFromText: generateMemoirFromText,
-  generateWordsFromMemoir: generateWordsFromMemoir,
-  generateWordsFromText: generateWordsFromText,
-  generateWordsInFromText: generateWordsInFromText,
-  generateMemoirFromWords: generateMemoirFromWords
-}
-
-function generateWordsFromText (text, number, random) {
-  let wordsIn = generateWordsInFromText(text)
-  return generateWordsFromWords(wordsIn, number, random)
-}
-
-function generateWordsInFromText (text) {
-  let words = text.toLowerCase().split(/[^a-z'-]/).filter(word => !!word)
-  words = R.uniq(words)
-  return words
-}
-
-function generateWordsFromMemoir (memoir, number, random) {
-  random = random || Math.random
-  let wordsOut = []
-  for (const i of Array(number).keys()) {
-    const word = generateWord(memoir, random)
-    wordsOut.push(word)
-  }
-  return wordsOut
-}
-
-function generateWordsFromWords (wordsIn, number, random) {
-  let memoir = generateMemoirFromWords(wordsIn)
-  const wordsOut = generateWordsFromMemoir(memoir, number, random)
-  return wordsOut
-}
-
-function generateMemoirFromText (text) {
-  let wordsIn = generateWordsInFromText(text)
-  return generateMemoirFromWords(wordsIn)
-}
-
-function generateMemoirFromWords (wordsIn) {
-  let memoir = {}
-  wordsIn.forEach(function (word) {
-    digestWord(memoir, word)
-  })
-  return memoir
+  generateWord: generateWord
 }
 
 function generateNextLetter (word, memoir, random) {
