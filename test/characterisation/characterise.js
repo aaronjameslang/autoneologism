@@ -6,7 +6,7 @@ const generateWordsInFromText = require('../../src/generate').generateWordsInFro
 const generateWordsFromMemoir = require('../../src/generate').generateWordsFromMemoir
 const generateMemoirFromWords = require('../../src/generate').generateMemoirFromWords
 
-const psuedoRandom = require('../_support/pseudo-random')()
+const PsuedoRandom = require('../_support/pseudo-random')
 
 const REGENERATE = false // Make this read env var
 
@@ -50,6 +50,7 @@ function testGenerateMemoirFromWords (textName) {
 
 function testGenerateWordsFromMemoir (textName) {
   test('characterise generateWordsFromMemoir ' + textName, function (t) {
+    const psuedoRandom = PsuedoRandom()
     const memoirPath = path.join(__dirname, textName, 'memoir.json')
     const wordsOutPath = path.join(__dirname, textName, 'words-out.json')
     const memoir = readJsonFile(memoirPath)
