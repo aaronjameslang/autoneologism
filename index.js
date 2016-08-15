@@ -1,6 +1,6 @@
 const R = require('ramda')
 
-const generateWord = require('./src/generate').generateWord
+const generateUniqueWord = require('./src/generate').generateUniqueWord
 const digestWord = require('./src/digest').digestWord
 
 module.exports = {
@@ -23,11 +23,12 @@ function generateMemoirFromWords (wordsIn) {
   return memoir
 }
 
-function generateWordsFromMemoir (memoir, number, random) {
+function generateWordsFromMemoir (memoir, number, wordsToExclude, random) {
   random = random || Math.random
+  if (!wordsToExclude.has) wordsToExclude = new Set(wordsToExclude)
   let wordsOut = []
   for (const i of Array(number).keys()) {
-    const word = generateWord(memoir, random)
+    const word = generateUniqueWord(memoir, random, wordsToExclude)
     wordsOut.push(word)
   }
   return wordsOut

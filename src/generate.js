@@ -4,7 +4,8 @@ module.exports = {
   calculateArrayOfPotentialLetters: calculateArrayOfPotentialLetters,
   generateNextLetterFromArray: generateNextLetterFromArray,
   generateNextLetter: generateNextLetter,
-  generateWord: generateWord
+  generateWord: generateWord,
+  generateUniqueWord: generateUniqueWord
 }
 
 function generateNextLetter (word, memoir, random) {
@@ -23,6 +24,20 @@ function generateNextLetter (word, memoir, random) {
   var array = calculateArrayOfPotentialLetters(submemoir)
   var letter = generateNextLetterFromArray(array, random)
   return letter
+}
+
+/**
+ *
+ * @param memoir
+ * @param random
+ * @param previousWords Set
+ */
+function generateUniqueWord (memoir, random, previousWords) {
+  let word = '';
+    do {
+        word = generateWord(memoir, random)
+    } while (previousWords.has(word))
+  return word
 }
 
 function generateWord (memoir, random) {

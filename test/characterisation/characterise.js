@@ -51,10 +51,12 @@ function testGenerateMemoirFromWords (textName) {
 function testGenerateWordsFromMemoir (textName) {
   test('characterise generateWordsFromMemoir ' + textName, function (t) {
     const psuedoRandom = PsuedoRandom()
+    const wordsInPath = path.join(__dirname, textName, 'words-in.json')
     const memoirPath = path.join(__dirname, textName, 'memoir.json')
     const wordsOutPath = path.join(__dirname, textName, 'words-out.json')
+    const wordsIn = readJsonFile(wordsInPath)
     const memoir = readJsonFile(memoirPath)
-    const actualWordsOut = generateWordsFromMemoir(memoir, 100, psuedoRandom)
+    const actualWordsOut = generateWordsFromMemoir(memoir, 100, wordsIn, psuedoRandom)
     if (REGENERATE) writeJsonFile(wordsOutPath, actualWordsOut)
     const expectedWordsOut = readJsonFile(wordsOutPath)
     t.deepEqual(actualWordsOut, expectedWordsOut)
