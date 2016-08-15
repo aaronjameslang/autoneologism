@@ -8,7 +8,7 @@ const generateMemoirFromWords = require('../../src/generate').generateMemoirFrom
 
 const psuedoRandom = require('../_support/pseudo-random')()
 
-const REGENERATE = false
+const REGENERATE = false // Make this read env var
 
 fs.readdirSync(__dirname).forEach(textName => {
   if (fs.statSync(path.join(__dirname, textName)).isDirectory()) {
