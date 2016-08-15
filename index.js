@@ -30,6 +30,7 @@ function generateWordsFromMemoir (memoir, number, wordsToExclude, random) {
   for (const i of Array(number).keys()) {
     const word = generateUniqueWord(memoir, random, wordsToExclude)
     wordsOut.push(word)
+    wordsToExclude.add(word)
   }
   return wordsOut
 }
