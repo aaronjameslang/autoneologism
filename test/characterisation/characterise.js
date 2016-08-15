@@ -2,7 +2,6 @@ const test = require('tape')
 const fs = require('fs')
 const path = require('path')
 
-const generateWordsInFromText = require('../../index').generateWordsInFromText
 const generateWordsFromMemoir = require('../../index').generateWordsFromMemoir
 const generateMemoirFromWords = require('../../index').generateMemoirFromWords
 
@@ -16,30 +15,15 @@ fs.readdirSync(__dirname).forEach(textName => {
   }
 })
 
-function processDirectory (textName) {
-  testGenerateWordsInFromText(textName)
-  testGenerateMemoirFromWords(textName)
-  testGenerateWordsFromMemoir(textName)
+function processDirectory (name) {
+  testGenerateMemoirFromWords(name)
+  testGenerateWordsFromMemoir(name)
 }
 
-function testGenerateWordsInFromText (textName) {
-  test('characterise generateWordsInFromText ' + textName, function (t) {
-    const textPath = path.join(__dirname, textName, 'text.txt')
-    const wordsInPath = path.join(__dirname, textName, 'words-in.json')
-    const text = readTextFile(textPath)
-    const actualWordsIn = generateWordsInFromText(text)
-    if (REGENERATE) writeJsonFile(wordsInPath, actualWordsIn)
-    const expectedWordsIn = readJsonFile(wordsInPath)
-    t.deepEqual(actualWordsIn, expectedWordsIn)
-    t.end()
-  })
-}
-
-function testGenerateMemoirFromWords (textName) {
-  test('characterise generateMemoirFromWords ' + textName, function (t) {
-    const wordsInPath = path.join(__dirname, textName, 'words-in.json')
-    const memoirPath = path.join(__dirname, textName, 'memoir.json')
-    const wordsIn = readJsonFile(wordsInPath)
+function testGenerateMemoirFromWords (name) {
+  test('characterise generateMemoirFromWords ' + name, function (t) {
+    const wordsIn = readWordList(name)
+    const memoirPath = path.join(__dirname, name, 'memoir.json')
     const actualMemoir = generateMemoirFromWords(wordsIn)
     if (REGENERATE) writeJsonFile(memoirPath, actualMemoir)
     const expectedMemoir = readJsonFile(memoirPath)
@@ -48,13 +32,12 @@ function testGenerateMemoirFromWords (textName) {
   })
 }
 
-function testGenerateWordsFromMemoir (textName) {
-  test('characterise generateWordsFromMemoir ' + textName, function (t) {
+function testGenerateWordsFromMemoir (name) {
+  test('characterise generateWordsFromMemoir ' + name, function (t) {
     const psuedoRandom = PsuedoRandom()
-    const wordsInPath = path.join(__dirname, textName, 'words-in.json')
-    const memoirPath = path.join(__dirname, textName, 'memoir.json')
-    const wordsOutPath = path.join(__dirname, textName, 'words-out.json')
-    const wordsIn = readJsonFile(wordsInPath)
+    const wordsIn = readWordList(name)
+    const memoirPath = path.join(__dirname, name, 'memoir.json')
+    const wordsOutPath = path.join(__dirname, name, 'words-out.json')
     const memoir = readJsonFile(memoirPath)
     const actualWordsOut = generateWordsFromMemoir(memoir, 100, wordsIn, psuedoRandom)
     if (REGENERATE) writeJsonFile(wordsOutPath, actualWordsOut)
@@ -65,13 +48,16 @@ function testGenerateWordsFromMemoir (textName) {
 }
 
 function readJsonFile (filepath) {
-  return JSON.parse(readTextFile(filepath))
+  return JSON.parse(String(fs.readFileSync(filepath)))
 }
 
 function writeJsonFile (filepath, data) {
   return fs.writeFileSync(filepath, JSON.stringify(data, null, 2))
 }
 
-function readTextFile (filepath) {
-  return String(fs.readFileSync(filepath))
+function readWordList (name) {
+  const filepath = path.join(__dirname, name, 'words-in.txt')
+  const text =  String(fs.readFileSync(filepath))
+  const words = text.split(/\s+/).filter(word => !!word)
+  return words
 }

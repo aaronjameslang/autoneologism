@@ -4,15 +4,8 @@ const generateUniqueWord = require('./src/generate').generateUniqueWord
 const digestWord = require('./src/digest').digestWord
 
 module.exports = {
-  generateWordsInFromText: generateWordsInFromText,
   generateMemoirFromWords: generateMemoirFromWords,
   generateWordsFromMemoir: generateWordsFromMemoir
-}
-
-function generateWordsInFromText (text) {
-  let words = text.toLowerCase().split(/[^a-z'-]/).filter(word => !!word)
-  words = R.uniq(words)
-  return words
 }
 
 function generateMemoirFromWords (wordsIn) {
