@@ -6,6 +6,7 @@
   "scripts": {
     "format": "standard-format --write",
     "lint": "standard --fix",
+    "regenerate": "REGENERATE=true tape test/characterisation/characterise.js",
     "test": "tape test/*.js test/**/*.js | faucet",
     "test-debug": "tape test/*.js test/**/*.js"
   },
