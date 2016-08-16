@@ -18,7 +18,7 @@ function generateWordsFromMemoir (memoir, number, wordsToExclude, random) {
   random = random || Math.random
   if (!wordsToExclude.has) wordsToExclude = new Set(wordsToExclude)
   let wordsOut = []
-  for (const i of Array(number).keys()) {
+  for (let i = 0; i < number; i += 1) {
     const word = generateUniqueWord(memoir, random, wordsToExclude)
     wordsOut.push(word)
     wordsToExclude.add(word)
