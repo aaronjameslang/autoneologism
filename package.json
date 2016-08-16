@@ -4,6 +4,7 @@
   "description": "A word generator that teaches itself your phonotactics",
   "main": "index.js",
   "scripts": {
+    "build": "npm i &&  npm run format -s && npm run test -s && npm run lint",
     "format": "standard-format --write",
     "lint": "standard --fix",
     "regenerate": "REGENERATE=true tape test/characterisation/characterise.js",
