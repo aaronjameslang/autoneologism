@@ -24,11 +24,18 @@ function digestWord (memoir, word) {
 }
 
 /**
- * @param memoir array
- * @param link array
+ * @param memoir array The memoir
+ * @param link array The link describing the submemoir to be incremented
  */
 function incrementSubmemoir (memoir, link) {
   if (!memoir) throw new Error()
+  var submemoir = findSubmemoir(memoir, link)
+  const lastLetter = link[link.length - 1]
+  submemoir[lastLetter] |= 0
+  submemoir[lastLetter] += 1
+}
+
+function findSubmemoir (memoir, link) {
   let submemoir = memoir
   link.forEach(function (linkLetter, index) {
     if (index === link.length - 1) {
@@ -39,6 +46,6 @@ function incrementSubmemoir (memoir, link) {
     }
     submemoir = submemoir[linkLetter]
   })
-  submemoir[link[link.length - 1]] |= 0
-  submemoir[link[link.length - 1]] += 1
+
+  return submemoir
 }
