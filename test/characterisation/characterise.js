@@ -57,7 +57,7 @@ function writeJsonFile (filepath, data) {
 
 function readWordList (name) {
   const filepath = path.join(__dirname, name, 'words-in.txt')
-  const text =  String(fs.readFileSync(filepath))
+  const text = String(fs.readFileSync(filepath))
   const words = text.split(/\s+/).filter(word => !!word)
   return words
 }

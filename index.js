@@ -1,5 +1,3 @@
-const R = require('ramda')
-
 const generateUniqueWord = require('./src/generate').generateUniqueWord
 const digestWord = require('./src/digest').digestWord
 

@@ -1,5 +1,3 @@
-const R = require('ramda')
-
 module.exports = {
   calculateArrayOfPotentialLetters: calculateArrayOfPotentialLetters,
   generateNextLetterFromArray: generateNextLetterFromArray,
@@ -33,10 +31,10 @@ function generateNextLetter (word, memoir, random) {
  * @param previousWords Set
  */
 function generateUniqueWord (memoir, random, previousWords) {
-  let word = '';
-    do {
-        word = generateWord(memoir, random)
-    } while (previousWords.has(word))
+  let word = ''
+  do {
+    word = generateWord(memoir, random)
+  } while (previousWords.has(word))
   return word
 }
 
