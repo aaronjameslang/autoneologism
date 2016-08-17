@@ -32,10 +32,12 @@ function generateNextLetter (word, memoir, random) {
  */
 function generateUniqueWord (memoir, random, previousWords) {
   let word = ''
+  let counter = 100
   do {
     word = generateWord(memoir, random)
-  } while (previousWords.has(word))
-  return word
+    counter -= 1
+  } while (counter && previousWords.has(word))
+  return counter && word || null
 }
 
 function generateWord (memoir, random) {
