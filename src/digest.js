@@ -8,10 +8,10 @@ module.exports = {
 /**
  * @param word String
  */
-function digestWord (memoir, word) {
+function digestWord (memoir, linkLength, word) {
   if (!memoir) throw new Error()
   if (!word) throw new Error('Falsey word: ' + JSON.stringify(word))
-  var link = ['START', 'START', 'START']
+  var link = new Array(linkLength).fill('START')
   R.times(i => {
     let letter = word[i]
     link.shift()
@@ -31,7 +31,7 @@ function digestWord (memoir, word) {
  */
 function incrementSubmemoir (memoir, link) {
   if (!memoir) throw new Error()
-  var submemoir = findSubmemoir(memoir, link)
+  const submemoir = findSubmemoir(memoir, link)
   const lastLetter = link[link.length - 1]
   submemoir[lastLetter] |= 0
   submemoir[lastLetter] += 1

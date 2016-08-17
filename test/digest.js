@@ -47,7 +47,7 @@ var fixtures = [
       }
     },
     words: ['dog', 'dig', 'dug', 'dot'],
-    linkLength: 2
+    linkLength: 3
   }
 ]
 
@@ -56,7 +56,7 @@ function testDigest (expectedMemoir, words, linkLength, memoir, t) {
   memoir = memoir || {}
   if (!memoir) throw new Error()
   words.forEach(function (word) {
-    digestWord(memoir, word)
+    digestWord(memoir, linkLength, word)
   })
   t.deepEqual(memoir, expectedMemoir)
 }
