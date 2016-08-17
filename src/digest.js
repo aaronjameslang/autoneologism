@@ -1,3 +1,5 @@
+const R = require('ramda')
+
 module.exports = {
   digestWord: digestWord,
   incrementSubmemoir: incrementSubmemoir
@@ -10,12 +12,12 @@ function digestWord (memoir, word) {
   if (!memoir) throw new Error()
   if (!word) throw new Error('Falsey word: ' + JSON.stringify(word))
   var link = ['START', 'START', 'START']
-  for (let i = 0; i < word.length; i += 1) {
+  R.times(i => {
     let letter = word[i]
     link.shift()
     link.push(letter)
     incrementSubmemoir(memoir, link)
-  }
+  }, word.length)
 
   link.shift()
   link.push('END')
