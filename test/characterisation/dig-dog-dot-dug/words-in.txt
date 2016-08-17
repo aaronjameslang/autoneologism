@@ -1,0 +1,4 @@
+dig
+dog
+dot
+dug
