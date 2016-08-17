@@ -47,7 +47,7 @@ var memoir = {
   }
 }
 
-test('generateWord', function (t) {
+test('generateWord', t => {
   [
     {
       random: [0, 0, 0, 0],
@@ -69,13 +69,11 @@ test('generateWord', function (t) {
       random: [0.99, 0.5, 0.99, 0],
       expectedWord: 'dig'
     }
-  ].forEach(function (fixture) {
+  ].forEach(fixture => {
     t.test(
       'should correctly generate ' + JSON.stringify([fixture.expectedWord, fixture.random]),
-      function (t) {
-        var actualWord = generateWord(memoir, function () {
-          return fixture.random.shift()
-        })
+      t => {
+        const actualWord = generateWord(memoir, () => fixture.random.shift())
         t.equal(actualWord, fixture.expectedWord)
         t.end()
       }
@@ -83,7 +81,7 @@ test('generateWord', function (t) {
   })
 })
 
-test('generateNextLetter', function (t) {
+test('generateNextLetter', t => {
   [
     {
       word: '',
@@ -134,13 +132,11 @@ test('generateNextLetter', function (t) {
       random: 0.99,
       expectedLetter: 'END'
     }
-  ].forEach(function (fixture) {
+  ].forEach(fixture => {
     t.test(
       'should correctly calculate ' + JSON.stringify([fixture.word, fixture.random, fixture.expectedLetter]),
-      function (t) {
-        var actualLetter = generateNextLetter(fixture.word, memoir, function () {
-          return fixture.random
-        })
+      t => {
+        var actualLetter = generateNextLetter(fixture.word, memoir, () => fixture.random)
         t.equal(actualLetter, fixture.expectedLetter)
         t.end()
       }
@@ -148,16 +144,16 @@ test('generateNextLetter', function (t) {
   })
 })
 
-test('calculateArrayOfPotentialLetters', function (t) {
+test('calculateArrayOfPotentialLetters', t => {
   [
     {
       submemoir: {'t': 1, 'g': 3},
       expectedArray: ['t', 'g', 'g', 'g']
     }
-  ].forEach(function (fixture) {
+  ].forEach(fixture => {
     t.test(
       'should correctly calculate ' + JSON.stringify(fixture.submemoir),
-      function (t) {
+      t => {
         var actualArray = calculateArrayOfPotentialLetters(fixture.submemoir)
         t.deepEqual(actualArray, fixture.expectedArray)
         t.end()
@@ -166,7 +162,7 @@ test('calculateArrayOfPotentialLetters', function (t) {
   })
 })
 
-test('generateNextLetterFromArray', function (t) {
+test('generateNextLetterFromArray', t => {
   [
     {
       array: ['a', 'b', 'c', 'd'],
@@ -203,14 +199,11 @@ test('generateNextLetterFromArray', function (t) {
       random: 0.99,
       expectedLetter: 'd'
     }
-  ].forEach(function (fixture) {
+  ].forEach(fixture => {
     t.test(
       'should correctly generate next letter ' + JSON.stringify(fixture.array) + ' ' + fixture.random,
-      function (t) {
-        function random () {
-          return fixture.random
-        }
-        var actualLetter = generateNextLetterFromArray(fixture.array, random)
+      t => {
+        var actualLetter = generateNextLetterFromArray(fixture.array, () => fixture.random)
         t.equal(actualLetter, fixture.expectedLetter)
         t.end()
       }

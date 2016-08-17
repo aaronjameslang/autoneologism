@@ -1,7 +1,7 @@
 let test = require('tape')
 let incrementSubmemoir = require('../src/digest').incrementSubmemoir
 
-test('incrementSubmemoir', function (t) {
+test('incrementSubmemoir', t => {
   [
     {
       memoir: {},
@@ -18,10 +18,10 @@ test('incrementSubmemoir', function (t) {
       link: ['d', 'u', 'g'],
       expectedMemoir: {'d': {'o': {'g': 1}, 'u': {'g': 1}}}
     }
-  ].forEach(function (fixture) {
+  ].forEach(fixture => {
     t.test(
       'should incrementSubmemoir ' + JSON.stringify(fixture.link),
-      function (t) {
+      t => {
         t.plan(1)
         incrementSubmemoir(fixture.memoir, fixture.link)
         t.deepEqual(fixture.memoir, fixture.expectedMemoir)
