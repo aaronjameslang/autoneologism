@@ -1,5 +1,7 @@
 const R = require('ramda')
 
+const findSubmemoir = require('./findSubmemoir')
+
 module.exports = {
   digestWord: digestWord,
   incrementSubmemoir: incrementSubmemoir
@@ -35,21 +37,4 @@ function incrementSubmemoir (memoir, link) {
   const lastLetter = link[link.length - 1]
   submemoir[lastLetter] |= 0
   submemoir[lastLetter] += 1
-}
-
-/**
- * @param memoir array
- * @param link array
- * @returns submemoir array
- */
-function findSubmemoir (memoir, link) {
-  let submemoir = memoir
-  link.forEach(function (linkLetter, index) {
-    if (index === link.length - 1) {
-      return // skip last
-    }
-    submemoir[linkLetter] = submemoir[linkLetter] || {}
-    submemoir = submemoir[linkLetter]
-  })
-  return submemoir
 }
