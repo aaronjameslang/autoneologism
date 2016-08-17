@@ -6,7 +6,7 @@ module.exports = {
   generateUniqueWord: generateUniqueWord
 }
 
-function generateNextLetter (word, memoir, random) {
+function generateNextLetter (word, memoir, linkLength, random) {
   switch (word.length) {
     case 0:
       var submemoir = memoir['START']['START']
@@ -30,22 +30,22 @@ function generateNextLetter (word, memoir, random) {
  * @param random
  * @param previousWords Set
  */
-function generateUniqueWord (memoir, random, previousWords) {
+function generateUniqueWord (memoir, linkLength, random, previousWords) {
   let word = ''
   let counter = 100
   do {
-    word = generateWord(memoir, random)
+    word = generateWord(memoir, linkLength, random)
     counter -= 1
   } while (counter && previousWords.has(word))
   return counter && word || null
 }
 
-function generateWord (memoir, random) {
+function generateWord (memoir, linkLength, random) {
   var word = ''
   var letter = ''
   while (letter !== 'END') {
     word += letter
-    letter = generateNextLetter(word, memoir, random)
+    letter = generateNextLetter(word, memoir, linkLength, random)
   }
   return word
 }

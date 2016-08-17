@@ -17,13 +17,13 @@ function generateMemoirFromWords (wordsIn, linkLength) {
   return memoir
 }
 
-function generateWordsFromMemoir (memoir, number, wordsToExclude, random) {
+function generateWordsFromMemoir (memoir, linkLength, numberOrWords, wordsToExclude, random) {
   random = random || Math.random
   if (!wordsToExclude.has) wordsToExclude = new Set(wordsToExclude)
   const wordsOut = R.times(() => {
-    const word = generateUniqueWord(memoir, random, wordsToExclude)
+    const word = generateUniqueWord(memoir, linkLength, random, wordsToExclude)
     wordsToExclude.add(word)
     return word
-  }, number)
+  }, numberOrWords)
   return wordsOut
 }

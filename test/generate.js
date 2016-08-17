@@ -73,7 +73,7 @@ test('generateWord', t => {
     t.test(
       'should correctly generate ' + JSON.stringify([fixture.expectedWord, fixture.random]),
       t => {
-        const actualWord = generateWord(memoir, () => fixture.random.shift())
+        const actualWord = generateWord(memoir, 3, () => fixture.random.shift())
         t.equal(actualWord, fixture.expectedWord)
         t.end()
       }
@@ -136,7 +136,7 @@ test('generateNextLetter', t => {
     t.test(
       'should correctly calculate ' + JSON.stringify([fixture.word, fixture.random, fixture.expectedLetter]),
       t => {
-        var actualLetter = generateNextLetter(fixture.word, memoir, () => fixture.random)
+        var actualLetter = generateNextLetter(fixture.word, memoir, 3, () => fixture.random)
         t.equal(actualLetter, fixture.expectedLetter)
         t.end()
       }

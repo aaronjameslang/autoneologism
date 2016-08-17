@@ -2,8 +2,8 @@ const test = require('tape')
 const fs = require('fs')
 const path = require('path')
 
-const generateWordsFromMemoir = require('../../index').generateWordsFromMemoir
 const generateMemoirFromWords = require('../../index').generateMemoirFromWords
+const generateWordsFromMemoir = require('../../index').generateWordsFromMemoir
 
 const PsuedoRandom = require('../_support/pseudo-random')
 
@@ -39,7 +39,7 @@ function testGenerateWordsFromMemoir (name) {
     const memoirPath = path.join(__dirname, name, 'memoir.json')
     const wordsOutPath = path.join(__dirname, name, 'words-out.json')
     const memoir = readJsonFile(memoirPath)
-    const actualWordsOut = generateWordsFromMemoir(memoir, 100, wordsIn, psuedoRandom)
+    const actualWordsOut = generateWordsFromMemoir(memoir, 3, 100, wordsIn, psuedoRandom)
     if (REGENERATE) writeJsonFile(wordsOutPath, actualWordsOut)
     const expectedWordsOut = readJsonFile(wordsOutPath)
     t.deepEqual(actualWordsOut, expectedWordsOut)
