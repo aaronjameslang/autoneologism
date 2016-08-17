@@ -37,17 +37,19 @@ function incrementSubmemoir (memoir, link) {
   submemoir[lastLetter] += 1
 }
 
+/**
+ * @param memoir array
+ * @param link array
+ * @returns submemoir array
+ */
 function findSubmemoir (memoir, link) {
   let submemoir = memoir
   link.forEach(function (linkLetter, index) {
     if (index === link.length - 1) {
       return // skip last
     }
-    if (!submemoir[linkLetter]) {
-      submemoir[linkLetter] = {}
-    }
+    submemoir[linkLetter] = submemoir[linkLetter] || {}
     submemoir = submemoir[linkLetter]
   })
-
   return submemoir
 }
