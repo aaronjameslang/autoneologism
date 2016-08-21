@@ -1,77 +1,38 @@
-let test = require('tape')
-let calculateArrayOfPotentialLetters = require('../src/generate').calculateArrayOfPotentialLetters
-let generateNextLetterFromArray = require('../src/generate').generateNextLetterFromArray
-let generateNextLetter = require('../src/generate').generateNextLetter
-let generateWord = require('../src/generate').generateWord
+const test = require('tape')
+const fs = require('fs')
+const path = require('path')
 
-var memoir = {
-  'START': {
-    'START': {
-      'd': 4
-    },
-    'd': {
-      'o': 2,
-      'i': 1,
-      'u': 1
-    }
-  },
-  'd': {
-    'o': {
-      'g': 1,
-      't': 1
-    },
-    'i': {
-      'g': 1
-    },
-    'u': {
-      'g': 1
-    }
-  },
-  'o': {
-    'g': {
-      'END': 1
-    },
-    't': {
-      'END': 1
-    }
-  },
-  'i': {
-    'g': {
-      'END': 1
-    }
-  },
-  'u': {
-    'g': {
-      'END': 1
-    }
-  }
-}
+const calculateArrayOfPotentialLetters = require('../src/generate').calculateArrayOfPotentialLetters
+const generateNextLetterFromArray = require('../src/generate').generateNextLetterFromArray
+const generateNextLetter = require('../src/generate').generateNextLetter
+const generateWord = require('../src/generate').generateWord
 
-test('generateWord', t => {
-  [
+const memoir = JSON.parse(String(fs.readFileSync(path.join(__dirname, '/characterisation/dig-dog-dot-dug/memoir.json'))))
+
+  ;[
     {
-      random: [0, 0, 0, 0],
+      random: [0, 0.49, 0, 0],
       expectedWord: 'dog'
     },
     {
-      random: [0, 0, 0.5, 0],
+      random: [0, 0.49, 0.5, 0],
       expectedWord: 'dot'
     },
     {
-      random: [0, 0.5, 0, 0],
+      random: [0, 0, 0, 0],
       expectedWord: 'dig'
     },
     {
-      random: [0, 0.5, 0.99, 0],
+      random: [0, 0, 0.99, 0],
       expectedWord: 'dig'
     },
     {
-      random: [0.99, 0.5, 0.99, 0],
+      random: [0.99, 0, 0.99, 0],
       expectedWord: 'dig'
     }
   ].forEach(fixture => {
-    t.test(
-      'should correctly generate ' + JSON.stringify([fixture.expectedWord, fixture.random]),
+    test.test(
+      'generateWord ' + JSON.stringify([fixture.expectedWord, fixture.random]),
       t => {
         const actualWord = generateWord(memoir, 3, () => fixture.random.shift())
         t.equal(actualWord, fixture.expectedWord)
@@ -79,10 +40,8 @@ test('generateWord', t => {
       }
     )
   })
-})
 
-test('generateNextLetter', t => {
-  [
+  ;[
     {
       word: '',
       random: 0,
@@ -96,7 +55,7 @@ test('generateNextLetter', t => {
     {
       word: 'd',
       random: 0.2,
-      expectedLetter: 'o'
+      expectedLetter: 'i'
     },
     {
       word: 'd',
@@ -106,7 +65,7 @@ test('generateNextLetter', t => {
     {
       word: 'd',
       random: 0.6,
-      expectedLetter: 'i'
+      expectedLetter: 'o'
     }, {
       word: 'd',
       random: 0.8,
@@ -133,8 +92,8 @@ test('generateNextLetter', t => {
       expectedLetter: 'END'
     }
   ].forEach(fixture => {
-    t.test(
-      'should correctly calculate ' + JSON.stringify([fixture.word, fixture.random, fixture.expectedLetter]),
+    test.test(
+      'generateNextLetter ' + JSON.stringify([fixture.word, fixture.random, fixture.expectedLetter]),
       t => {
         var actualLetter = generateNextLetter(fixture.word, memoir, 3, () => fixture.random)
         t.equal(actualLetter, fixture.expectedLetter)
@@ -142,17 +101,15 @@ test('generateNextLetter', t => {
       }
     )
   })
-})
 
-test('calculateArrayOfPotentialLetters', t => {
-  [
+  ;[
     {
       submemoir: {'t': 1, 'g': 3},
       expectedArray: ['t', 'g', 'g', 'g']
     }
   ].forEach(fixture => {
-    t.test(
-      'should correctly calculate ' + JSON.stringify(fixture.submemoir),
+    test.test(
+      'calculateArrayOfPotentialLetters ' + JSON.stringify(fixture.submemoir),
       t => {
         var actualArray = calculateArrayOfPotentialLetters(fixture.submemoir)
         t.deepEqual(actualArray, fixture.expectedArray)
@@ -160,10 +117,8 @@ test('calculateArrayOfPotentialLetters', t => {
       }
     )
   })
-})
 
-test('generateNextLetterFromArray', t => {
-  [
+  ;[
     {
       array: ['a', 'b', 'c', 'd'],
       random: 0,
@@ -200,8 +155,8 @@ test('generateNextLetterFromArray', t => {
       expectedLetter: 'd'
     }
   ].forEach(fixture => {
-    t.test(
-      'should correctly generate next letter ' + JSON.stringify(fixture.array) + ' ' + fixture.random,
+    test.test(
+      'generateNextLetterFromArray ' + JSON.stringify(fixture.array) + ' ' + fixture.random,
       t => {
         var actualLetter = generateNextLetterFromArray(fixture.array, () => fixture.random)
         t.equal(actualLetter, fixture.expectedLetter)
@@ -209,4 +164,3 @@ test('generateNextLetterFromArray', t => {
       }
     )
   })
-})
