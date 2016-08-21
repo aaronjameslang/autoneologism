@@ -1,7 +1,7 @@
 const test = require('tape')
 const findSubmemoir = require('../src/findSubmemoir')
 
-const memoir = require('./characterisation/dig-dog-dot-dug/memoir')
+const memoir = require('./characterisation/dig-dog-dot-dug/memoir-3')
 
 ;[
   {

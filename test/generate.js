@@ -5,7 +5,7 @@ const generateNextLetterFromArray = require('../src/generate').generateNextLette
 const generateNextLetter = require('../src/generate').generateNextLetter
 const generateWord = require('../src/generate').generateWord
 
-const memoir = require('./characterisation/dig-dog-dot-dug/memoir')
+const memoir = require('./characterisation/dig-dog-dot-dug/memoir-3')
 
 ;[
   {

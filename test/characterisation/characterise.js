@@ -23,7 +23,7 @@ function processDirectory (name) {
 function testGenerateMemoirFromWords (name, linkLength) {
   test('characterise generateMemoirFromWords ' + name, function (t) {
     const wordsIn = readWordList(name)
-    const memoirPath = path.join(__dirname, name, 'memoir.json')
+    const memoirPath = path.join(__dirname, name, 'memoir-' + linkLength + '.json')
     const actualMemoir = generateMemoirFromWords(wordsIn, linkLength)
     if (REGENERATE) writeJsonFile(memoirPath, actualMemoir)
     const expectedMemoir = require(memoirPath)
@@ -36,8 +36,8 @@ function testGenerateWordsFromMemoir (name, linkLength) {
   test('characterise generateWordsFromMemoir ' + name, function (t) {
     const psuedoRandom = PsuedoRandom()
     const wordsIn = readWordList(name)
-    const memoirPath = path.join(__dirname, name, 'memoir.json')
-    const wordsOutPath = path.join(__dirname, name, 'words-out.json')
+    const memoirPath = path.join(__dirname, name, 'memoir-' + linkLength + '.json')
+    const wordsOutPath = path.join(__dirname, name, 'words-out-' + linkLength + '.json')
     const memoir = require(memoirPath)
     const actualWordsOut = generateWordsFromMemoir(memoir, linkLength, 100, wordsIn, psuedoRandom)
     if (REGENERATE) writeJsonFile(wordsOutPath, actualWordsOut)
