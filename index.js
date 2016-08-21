@@ -9,7 +9,6 @@ module.exports = {
 }
 
 function generateMemoirFromWords (wordsIn, linkLength) {
-  linkLength = linkLength || 3
   let memoir = {}
   wordsIn.forEach(function (word) {
     digestWord(memoir, linkLength, word)

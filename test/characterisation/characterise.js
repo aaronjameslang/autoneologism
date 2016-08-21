@@ -16,15 +16,15 @@ fs.readdirSync(__dirname).forEach(textName => {
 })
 
 function processDirectory (name) {
-  testGenerateMemoirFromWords(name)
-  testGenerateWordsFromMemoir(name)
+  testGenerateMemoirFromWords(name, 3)
+  testGenerateWordsFromMemoir(name, 3)
 }
 
-function testGenerateMemoirFromWords (name) {
+function testGenerateMemoirFromWords (name, linkLength) {
   test('characterise generateMemoirFromWords ' + name, function (t) {
     const wordsIn = readWordList(name)
     const memoirPath = path.join(__dirname, name, 'memoir.json')
-    const actualMemoir = generateMemoirFromWords(wordsIn)
+    const actualMemoir = generateMemoirFromWords(wordsIn, linkLength)
     if (REGENERATE) writeJsonFile(memoirPath, actualMemoir)
     const expectedMemoir = require(memoirPath)
     t.deepEqual(actualMemoir, expectedMemoir)
@@ -32,14 +32,14 @@ function testGenerateMemoirFromWords (name) {
   })
 }
 
-function testGenerateWordsFromMemoir (name) {
+function testGenerateWordsFromMemoir (name, linkLength) {
   test('characterise generateWordsFromMemoir ' + name, function (t) {
     const psuedoRandom = PsuedoRandom()
     const wordsIn = readWordList(name)
     const memoirPath = path.join(__dirname, name, 'memoir.json')
     const wordsOutPath = path.join(__dirname, name, 'words-out.json')
     const memoir = require(memoirPath)
-    const actualWordsOut = generateWordsFromMemoir(memoir, 3, 100, wordsIn, psuedoRandom)
+    const actualWordsOut = generateWordsFromMemoir(memoir, linkLength, 100, wordsIn, psuedoRandom)
     if (REGENERATE) writeJsonFile(wordsOutPath, actualWordsOut)
     const expectedWordsOut = require(wordsOutPath)
     t.deepEqual(actualWordsOut, expectedWordsOut)
