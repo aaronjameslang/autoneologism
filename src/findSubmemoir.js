@@ -7,10 +7,7 @@ module.exports = findSubmemoir
  */
 function findSubmemoir (memoir, link) {
   let submemoir = memoir
-  link.forEach(function (linkLetter, index) {
-    if (index === link.length - 1) {
-      return // skip last
-    }
+  link.forEach(function (linkLetter) {
     submemoir[linkLetter] = submemoir[linkLetter] || {}
     submemoir = submemoir[linkLetter]
   })

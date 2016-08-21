@@ -33,8 +33,8 @@ function digestWord (memoir, linkLength, word) {
  */
 function incrementSubmemoir (memoir, link) {
   if (!memoir) throw new Error()
-  const submemoir = findSubmemoir(memoir, link)
-  const lastLetter = link[link.length - 1]
+  const submemoir = findSubmemoir(memoir, R.init(link))
+  const lastLetter = R.last(link)
   submemoir[lastLetter] |= 0
   submemoir[lastLetter] += 1
 }
