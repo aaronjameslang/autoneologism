@@ -1,3 +1,5 @@
+const findSubmemoir = require('./findSubmemoir')
+
 module.exports = {
   calculateArrayOfPotentialLetters: calculateArrayOfPotentialLetters,
   generateNextLetterFromArray: generateNextLetterFromArray,
@@ -6,20 +8,14 @@ module.exports = {
   generateUniqueWord: generateUniqueWord
 }
 
-function generateNextLetter (word, memoir, linkLength, random) {
-  if (typeof word !== 'string') throw new Error()
-  switch (word.length) {
-    case 0:
-      var submemoir = memoir['START']['START']
-      break
-    case 1:
-      submemoir = memoir['START'][word[word.length - 1]]
-      break
-    default:
-      submemoir = memoir[word[word.length - 2]][word[word.length - 1]]
-      break
+function generateNextLetter (wordSoFar, memoir, linkLength, random) {
+  if (typeof wordSoFar !== 'string') throw new Error()
+  if (wordSoFar.length > 100) throw new Error()
+  const link = wordSoFar.slice(-linkLength + 1).split('')
+  while (link.length < linkLength - 1) {
+    link.unshift('START')
   }
-
+  const submemoir = findSubmemoir(memoir, link)
   var array = calculateArrayOfPotentialLetters(submemoir)
   var letter = generateNextLetterFromArray(array, random)
   return letter
