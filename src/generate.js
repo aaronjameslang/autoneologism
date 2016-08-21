@@ -7,6 +7,7 @@ module.exports = {
 }
 
 function generateNextLetter (word, memoir, linkLength, random) {
+  if (typeof word !== 'string') throw new Error()
   switch (word.length) {
     case 0:
       var submemoir = memoir['START']['START']
@@ -25,7 +26,6 @@ function generateNextLetter (word, memoir, linkLength, random) {
 }
 
 /**
- *
  * @param memoir
  * @param random
  * @param previousWords Set
@@ -51,6 +51,7 @@ function generateWord (memoir, linkLength, random) {
 }
 
 function calculateArrayOfPotentialLetters (submemoir) {
+  if (typeof submemoir !== 'object') throw new Error()
   var array = []
   for (const letter in submemoir) {
     let weight = submemoir[letter]
@@ -63,5 +64,7 @@ function calculateArrayOfPotentialLetters (submemoir) {
 
 function generateNextLetterFromArray (array, random) {
   let index = Math.floor(random() * array.length)
-  return array[index]
+  var letter = array[index]
+  if (typeof letter !== 'string') throw new Error()
+  return letter
 }
