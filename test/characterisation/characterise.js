@@ -26,7 +26,7 @@ function testGenerateMemoirFromWords (name) {
     const memoirPath = path.join(__dirname, name, 'memoir.json')
     const actualMemoir = generateMemoirFromWords(wordsIn)
     if (REGENERATE) writeJsonFile(memoirPath, actualMemoir)
-    const expectedMemoir = readJsonFile(memoirPath)
+    const expectedMemoir = require(memoirPath)
     t.deepEqual(actualMemoir, expectedMemoir)
     t.end()
   })
@@ -38,17 +38,13 @@ function testGenerateWordsFromMemoir (name) {
     const wordsIn = readWordList(name)
     const memoirPath = path.join(__dirname, name, 'memoir.json')
     const wordsOutPath = path.join(__dirname, name, 'words-out.json')
-    const memoir = readJsonFile(memoirPath)
+    const memoir = require(memoirPath)
     const actualWordsOut = generateWordsFromMemoir(memoir, 3, 100, wordsIn, psuedoRandom)
     if (REGENERATE) writeJsonFile(wordsOutPath, actualWordsOut)
-    const expectedWordsOut = readJsonFile(wordsOutPath)
+    const expectedWordsOut = require(wordsOutPath)
     t.deepEqual(actualWordsOut, expectedWordsOut)
     t.end()
   })
-}
-
-function readJsonFile (filepath) {
-  return JSON.parse(String(fs.readFileSync(filepath)))
 }
 
 function writeJsonFile (filepath, data) {

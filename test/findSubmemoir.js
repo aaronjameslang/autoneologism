@@ -1,9 +1,7 @@
 const test = require('tape')
-const fs = require('fs')
-const path = require('path')
 const findSubmemoir = require('../src/findSubmemoir')
 
-const memoir = JSON.parse(String(fs.readFileSync(path.join(__dirname, '/characterisation/dig-dog-dot-dug/memoir.json'))))
+const memoir = require('./characterisation/dig-dog-dot-dug/memoir')
 
 ;[
   {

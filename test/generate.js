@@ -1,13 +1,11 @@
 const test = require('tape')
-const fs = require('fs')
-const path = require('path')
 
 const calculateArrayOfPotentialLetters = require('../src/generate').calculateArrayOfPotentialLetters
 const generateNextLetterFromArray = require('../src/generate').generateNextLetterFromArray
 const generateNextLetter = require('../src/generate').generateNextLetter
 const generateWord = require('../src/generate').generateWord
 
-const memoir = JSON.parse(String(fs.readFileSync(path.join(__dirname, '/characterisation/dig-dog-dot-dug/memoir.json'))))
+const memoir = require('./characterisation/dig-dog-dot-dug/memoir')
 
 ;[
   {
