@@ -18,19 +18,20 @@ fs.readdirSync(__dirname).forEach(textName => {
 })
 
 function processDirectory (name) {
+  const minimumLinkLength = 2
   const maximumLinkLength = getMaximumLinkLength(name)
   R.times(linkLength => {
-    if (linkLength < 3) return
+    if (linkLength < minimumLinkLength) return
     testGenerateMemoirFromWords(name, linkLength)
     testGenerateWordsFromMemoir(name, linkLength)
-  }, maximumLinkLength)
+  }, maximumLinkLength + 1)
 }
 
 function getMaximumLinkLength (name) {
   const wordsInPath = getWordsInPath(name)
   const command = 'wc -l ' + wordsInPath
-  const wordsInCount = execSync(command)
-  const maximumLinkLength = wordsInCount < 1000 ? 3 : 3
+  const wordsInCount = Number(String(execSync(command)).split(' ')[0])
+  const maximumLinkLength = (wordsInCount < 1000) ? 5 : 3
   return maximumLinkLength
 }
 
