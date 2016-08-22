@@ -1,6 +1,7 @@
 const test = require('tape')
 const fs = require('fs')
 const path = require('path')
+const R = require('ramda')
 
 const generateMemoirFromWords = require('../../index').generateMemoirFromWords
 const generateWordsFromMemoir = require('../../index').generateWordsFromMemoir
@@ -16,8 +17,12 @@ fs.readdirSync(__dirname).forEach(textName => {
 })
 
 function processDirectory (name) {
-  testGenerateMemoirFromWords(name, 3)
-  testGenerateWordsFromMemoir(name, 3)
+  const maximumLinkLength = 3
+  R.times(linkLength => {
+    if (linkLength < 3) return
+    testGenerateMemoirFromWords(name, linkLength)
+    testGenerateWordsFromMemoir(name, linkLength)
+  }, maximumLinkLength)
 }
 
 function testGenerateMemoirFromWords (name, linkLength) {
@@ -58,6 +63,6 @@ function readWordList (name) {
   return words
 }
 
-function getWordsInPath(name) {
+function getWordsInPath (name) {
   return path.join(__dirname, name, 'words-in.txt')
 }
