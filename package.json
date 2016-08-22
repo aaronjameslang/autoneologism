@@ -11,7 +11,7 @@
     "build": "npm i &&  npm run format -s && npm run test -s && npm run lint",
     "format": "standard-format --write",
     "lint": "standard --fix",
-    "regenerate": "REGENERATE=true tape test/characterisation/characterise.js",
+    "regenerate": "rm test/characterisation/*/*.json && REGENERATE=true tape test/characterisation/characterise.js",
     "test": "tape test/*.js test/**/*.js | faucet",
     "test-debug": "tape test/*.js test/**/*.js"
   },
