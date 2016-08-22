@@ -10,7 +10,7 @@ const generateWordsFromMemoir = require('../../index').generateWordsFromMemoir
 const PsuedoRandom = require('../_support/pseudo-random')
 
 const REGENERATE = !!process.env.REGENERATE
-const QUICK      = !!process.env.QUICK
+const QUICK = !!process.env.QUICK
 
 fs.readdirSync(__dirname).forEach(textName => {
   if (fs.statSync(path.join(__dirname, textName)).isDirectory()) {
