@@ -2,6 +2,10 @@
   "name": "learning-word-generator",
   "version": "1.0.0",
   "description": "A word generator that teaches itself your phonotactics",
+  "author": "aaronjameslang@googlemail.com",
+  "repository": "ajl7c7.com:learning-word-generator.git",
+  "license": "UNLICENSED",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "build": "npm i &&  npm run format -s && npm run test -s && npm run lint",
@@ -11,7 +15,6 @@
     "test": "tape test/*.js test/**/*.js | faucet",
     "test-debug": "tape test/*.js test/**/*.js"
   },
-  "author": "aaronjameslang@googlemail.com",
   "devDependencies": {
     "faucet": "0.0.1",
     "standard": "^7.1.2",
