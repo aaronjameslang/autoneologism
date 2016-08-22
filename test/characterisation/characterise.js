@@ -10,6 +10,7 @@ const generateWordsFromMemoir = require('../../index').generateWordsFromMemoir
 const PsuedoRandom = require('../_support/pseudo-random')
 
 const REGENERATE = !!process.env.REGENERATE
+const QUICK      = !!process.env.QUICK
 
 fs.readdirSync(__dirname).forEach(textName => {
   if (fs.statSync(path.join(__dirname, textName)).isDirectory()) {
@@ -31,8 +32,11 @@ function getMaximumLinkLength (name) {
   const wordsInPath = getWordsInPath(name)
   const command = 'wc -l ' + wordsInPath
   const wordsInCount = Number(String(execSync(command)).split(' ')[0])
-  const maximumLinkLength = (wordsInCount < 1000) ? 5 : 3
-  return maximumLinkLength
+  if (wordsInCount < 1000) {
+    return 5
+  } else {
+    return QUICK ? 0 : 3
+  }
 }
 
 function testGenerateMemoirFromWords (name, linkLength) {

@@ -13,7 +13,8 @@
     "lint": "standard --fix",
     "regenerate": "rm test/characterisation/*/*.json && REGENERATE=true tape test/characterisation/characterise.js",
     "test": "tape test/*.js test/**/*.js | faucet",
-    "test-debug": "tape test/*.js test/**/*.js"
+    "test-debug": "tape test/*.js test/**/*.js",
+    "test-quick": "QUICK=true npm run test -s"
   },
   "devDependencies": {
     "faucet": "0.0.1",
