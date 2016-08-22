@@ -2,6 +2,7 @@ const test = require('tape')
 const fs = require('fs')
 const path = require('path')
 const R = require('ramda')
+const execSync = require('child_process').execSync
 
 const generateMemoirFromWords = require('../../index').generateMemoirFromWords
 const generateWordsFromMemoir = require('../../index').generateWordsFromMemoir
@@ -17,12 +18,20 @@ fs.readdirSync(__dirname).forEach(textName => {
 })
 
 function processDirectory (name) {
-  const maximumLinkLength = 3
+  const maximumLinkLength = getMaximumLinkLength(name)
   R.times(linkLength => {
     if (linkLength < 3) return
     testGenerateMemoirFromWords(name, linkLength)
     testGenerateWordsFromMemoir(name, linkLength)
   }, maximumLinkLength)
+}
+
+function getMaximumLinkLength (name) {
+  const wordsInPath = getWordsInPath(name)
+  const command = 'wc -l ' + wordsInPath
+  const wordsInCount = execSync(command)
+  const maximumLinkLength = wordsInCount < 1000 ? 3 : 3
+  return maximumLinkLength
 }
 
 function testGenerateMemoirFromWords (name, linkLength) {
