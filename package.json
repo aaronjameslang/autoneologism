@@ -11,6 +11,8 @@
     "build": "npm i &&  npm run format -s && npm run test -s && npm run lint",
     "format": "standard-format --write",
     "lint": "standard --fix",
+    "profile": "node --prof test/characterisation/characterise.js && npm run -s profile-view ",
+    "profile-view": "node --prof-process $(ls -t isolate-0x*-v8.log | head -1) | less",
     "regenerate": "rm test/characterisation/*/*.json && REGENERATE=true tape test/characterisation/characterise.js",
     "test": "npm run test-debug -s | faucet",
     "test-debug": "tape test/*.js test/**/*.js",
