@@ -1,10 +1,12 @@
 const R = require('ramda')
 
 const generateUniqueWord = require('./src/generate').generateUniqueWord
+const processMemoir = require('./src/process').processMemoir
 const digestWord = require('./src/digest').digestWord
 
 module.exports = {
   generateMemoirFromWords: generateMemoirFromWords,
+  processMemoir: processMemoir,
   generateWordsFromMemoir: generateWordsFromMemoir
 }
 
