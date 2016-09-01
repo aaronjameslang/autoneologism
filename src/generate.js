@@ -1,8 +1,6 @@
 const findSubmemoir = require('./findSubmemoir')
 
 module.exports = {
-  calculateArrayOfPotentialLetters: calculateArrayOfPotentialLetters,
-  generateNextLetterFromArray: generateNextLetterFromArray,
   generateNextLetter: generateNextLetter,
   generateWord: generateWord,
   generateUniqueWord: generateUniqueWord
@@ -16,8 +14,15 @@ function generateNextLetter (wordSoFar, memoir, linkLength, random) {
     link.unshift('START')
   }
   const submemoir = findSubmemoir(memoir, link)
-  var array = calculateArrayOfPotentialLetters(submemoir)
-  var letter = generateNextLetterFromArray(array, random)
+  const total = submemoir[submemoir.length - 1][1]
+  const index = random() * total
+  let letter = null
+  submemoir.forEach(pair => {
+    if (letter) return
+    if (index < pair[1]) {
+      letter = pair[0]
+    }
+  })
   return letter
 }
 
@@ -44,23 +49,4 @@ function generateWord (memoir, linkLength, random) {
     letter = generateNextLetter(word, memoir, linkLength, random)
   }
   return word
-}
-
-function calculateArrayOfPotentialLetters (submemoir) {
-  if (typeof submemoir !== 'object') throw new Error()
-  var array = []
-  for (const letter in submemoir) {
-    let weight = submemoir[letter]
-    for (let i = 0; i < weight; i += 1) {
-      array.push(letter)
-    }
-  }
-  return array
-}
-
-function generateNextLetterFromArray (array, random) {
-  let index = Math.floor(random() * array.length)
-  var letter = array[index]
-  if (typeof letter !== 'string') throw new Error()
-  return letter
 }

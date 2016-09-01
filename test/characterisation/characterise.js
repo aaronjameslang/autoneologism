@@ -70,7 +70,7 @@ function testGenerateWordsFromMemoir (name, linkLength) {
   test('characterise generateWordsFromMemoir ' + name, function (t) {
     const psuedoRandom = PsuedoRandom()
     const wordsIn = readWordList(name)
-    const memoirPath = path.join(__dirname, name, 'memoir-' + linkLength + '.json')
+    const memoirPath = path.join(__dirname, name, 'memoir-processed-' + linkLength + '.json')
     const wordsOutPath = path.join(__dirname, name, 'words-out-' + linkLength + '.json')
     const memoir = require(memoirPath)
     const actualWordsOut = generateWordsFromMemoir(memoir, linkLength, 100, wordsIn, psuedoRandom)
