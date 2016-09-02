@@ -39,13 +39,11 @@ function calculateNextLetter (wordSoFar, memoir, linkLength, random) {
  * @param previousWords Set
  */
 function generateUniqueWord (memoir, linkLength, random, previousWords) {
-  let word = ''
-  let counter = 100
-  do {
-    word = generateWord(memoir, linkLength, random)
-    counter -= 1
-  } while (counter && previousWords.has(word))
-  return counter && word || null
+  for (let i = 100; i; i -= 1) {
+    const word = generateWord(memoir, linkLength, random)
+    if (!previousWords.has(word)) return word
+  }
+  return null
 }
 
 function generateWord (memoir, linkLength, random) {
