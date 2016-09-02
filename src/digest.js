@@ -3,8 +3,17 @@ const R = require('ramda')
 const findSubmemoir = require('./findSubmemoir')
 
 module.exports = {
+  generateMemoirFromWords: generateMemoirFromWords,
   digestWord: digestWord,
   incrementSubmemoir: incrementSubmemoir
+}
+
+function generateMemoirFromWords (wordsIn, linkLength) {
+  let memoir = {}
+  wordsIn.forEach(function (word) {
+    digestWord(memoir, linkLength, word)
+  })
+  return memoir
 }
 
 /**

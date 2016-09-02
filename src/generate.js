@@ -1,9 +1,22 @@
+const R = require('ramda')
 const findSubmemoir = require('./findSubmemoir')
 
 module.exports = {
+  generateWordsFromMemoir: generateWordsFromMemoir,
   generateNextLetter: generateNextLetter,
   generateWord: generateWord,
   generateUniqueWord: generateUniqueWord
+}
+
+function generateWordsFromMemoir (memoir, linkLength, numberOrWords, wordsToExclude, random) {
+  random = random || Math.random
+  if (!wordsToExclude.has) wordsToExclude = new Set(wordsToExclude)
+  const wordsOut = R.times(() => {
+    const word = generateUniqueWord(memoir, linkLength, random, wordsToExclude)
+    wordsToExclude.add(word)
+    return word
+  }, numberOrWords)
+  return wordsOut
 }
 
 function generateNextLetter (wordSoFar, memoir, linkLength, random) {
