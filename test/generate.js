@@ -1,6 +1,6 @@
 const test = require('tape')
 
-const generateNextLetter = require('../src/generate').generateNextLetter
+const calculateNextLetter = require('../src/generate').calculateNextLetter
 const generateWord = require('../src/generate').generateWord
 
 const memoir = require('./characterisation/dig-dog-dot-dug/memoir-processed-3')
@@ -89,9 +89,9 @@ const memoir = require('./characterisation/dig-dog-dot-dug/memoir-processed-3')
   }
 ].forEach(fixture => {
   test.test(
-    'generateNextLetter ' + JSON.stringify([fixture.word, fixture.random, fixture.expectedLetter]),
+    'calculateNextLetter ' + JSON.stringify([fixture.word, fixture.random, fixture.expectedLetter]),
     t => {
-      var actualLetter = generateNextLetter(fixture.word, memoir, 3, () => fixture.random)
+      var actualLetter = calculateNextLetter(fixture.word, memoir, 3, fixture.random)
       t.equal(actualLetter, fixture.expectedLetter)
       t.end()
     }

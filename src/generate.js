@@ -3,7 +3,7 @@ const findSubmemoir = require('./findSubmemoir')
 
 module.exports = {
   generateWordsFromMemoir: generateWordsFromMemoir,
-  generateNextLetter: generateNextLetter,
+  calculateNextLetter: calculateNextLetter,
   generateWord: generateWord,
   generateUniqueWord: generateUniqueWord
 }
@@ -19,7 +19,7 @@ function generateWordsFromMemoir (memoir, linkLength, numberOrWords, wordsToExcl
   return wordsOut
 }
 
-function generateNextLetter (wordSoFar, memoir, linkLength, random) {
+function calculateNextLetter (wordSoFar, memoir, linkLength, random) {
   if (typeof wordSoFar !== 'string') throw new Error()
   if (wordSoFar.length > 100) throw new Error()
   const link = wordSoFar.slice(-linkLength + 1).split('')
@@ -27,7 +27,7 @@ function generateNextLetter (wordSoFar, memoir, linkLength, random) {
     link.unshift('START')
   }
   const submemoir = findSubmemoir(memoir, link)
-  return findLetterInSubmemoir(submemoir, random())
+  return findLetterInSubmemoir(submemoir, random)
 }
 
 /**
@@ -50,7 +50,7 @@ function generateWord (memoir, linkLength, random) {
   var letter = ''
   while (letter !== 'END') {
     word += letter
-    letter = generateNextLetter(word, memoir, linkLength, random)
+    letter = calculateNextLetter(word, memoir, linkLength, random())
   }
   return word
 }
