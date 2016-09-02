@@ -70,10 +70,10 @@ function testGenerateWordsFromMemoir (name, linkLength) {
   test('characterise generateWordsFromMemoir ' + name, function (t) {
     const psuedoRandom = PsuedoRandom()
     const wordsIn = readWordList(name)
-    const memoirPath = path.join(__dirname, name, 'memoir-processed-' + linkLength + '.json')
+    const processedMemoirPath = path.join(__dirname, name, 'memoir-processed-' + linkLength + '.json')
     const wordsOutPath = path.join(__dirname, name, 'words-out-' + linkLength + '.json')
-    const memoir = require(memoirPath)
-    const actualWordsOut = generateWordsFromMemoir(memoir, linkLength, 100, wordsIn, psuedoRandom)
+    const processedMemoir = require(processedMemoirPath)
+    const actualWordsOut = generateWordsFromMemoir(processedMemoir, linkLength, 100, wordsIn, psuedoRandom)
     if (REGENERATE) writeJsonFile(wordsOutPath, actualWordsOut)
     const expectedWordsOut = require(wordsOutPath)
     t.deepEqual(actualWordsOut, expectedWordsOut)
