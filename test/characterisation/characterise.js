@@ -5,6 +5,7 @@ const R = require('ramda')
 const execSync = require('child_process').execSync
 
 const generateMemoirFromWords = require('../../index').generateMemoirFromWords
+const processMemoir = require('../../index').processMemoir
 const generateWordsFromMemoir = require('../../index').generateWordsFromMemoir
 
 const PsuedoRandom = require('../_support/pseudo-random')
@@ -24,6 +25,7 @@ function processDirectory (name) {
   R.times(linkLength => {
     if (linkLength < minimumLinkLength) return
     testGenerateMemoirFromWords(name, linkLength)
+    testGenerateProcessedMemoirFromMemoir(name, linkLength)
     testGenerateWordsFromMemoir(name, linkLength)
   }, maximumLinkLength + 1)
 }
@@ -51,14 +53,27 @@ function testGenerateMemoirFromWords (name, linkLength) {
   })
 }
 
+function testGenerateProcessedMemoirFromMemoir (name, linkLength) {
+  test('characterise processMemoir ' + name, function (t) {
+    const memoirPath = path.join(__dirname, name, 'memoir-' + linkLength + '.json')
+    const processedMemoirPath = path.join(__dirname, name, 'memoir-processed-' + linkLength + '.json')
+    const memoir = require(memoirPath)
+    const actualProcessedMemoir = processMemoir(memoir)
+    if (REGENERATE) writeJsonFile(processedMemoirPath, actualProcessedMemoir)
+    const expectedProcessedMemoir = require(processedMemoirPath)
+    t.deepEqual(actualProcessedMemoir, expectedProcessedMemoir)
+    t.end()
+  })
+}
+
 function testGenerateWordsFromMemoir (name, linkLength) {
   test('characterise generateWordsFromMemoir ' + name, function (t) {
     const psuedoRandom = PsuedoRandom()
     const wordsIn = readWordList(name)
-    const memoirPath = path.join(__dirname, name, 'memoir-' + linkLength + '.json')
+    const processedMemoirPath = path.join(__dirname, name, 'memoir-processed-' + linkLength + '.json')
     const wordsOutPath = path.join(__dirname, name, 'words-out-' + linkLength + '.json')
-    const memoir = require(memoirPath)
-    const actualWordsOut = generateWordsFromMemoir(memoir, linkLength, 100, wordsIn, psuedoRandom)
+    const processedMemoir = require(processedMemoirPath)
+    const actualWordsOut = generateWordsFromMemoir(processedMemoir, linkLength, 100, wordsIn, psuedoRandom)
     if (REGENERATE) writeJsonFile(wordsOutPath, actualWordsOut)
     const expectedWordsOut = require(wordsOutPath)
     t.deepEqual(actualWordsOut, expectedWordsOut)
