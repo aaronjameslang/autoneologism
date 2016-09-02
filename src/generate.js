@@ -26,6 +26,7 @@ function generateWordsFromMemoir (memoir, linkLength, maxNumberOfWords, wordsToE
 
   return {
     attempts: numberOfAttempts,
+    efficiency: wordsOut.length / numberOfAttempts,
     words: wordsOut
   }
 }
