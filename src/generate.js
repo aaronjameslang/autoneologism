@@ -3,22 +3,27 @@ const findSubmemoir = require('./findSubmemoir')
 module.exports = {
   generateWordsFromMemoir: generateWordsFromMemoir,
   calculateNextLetter: calculateNextLetter,
-  generateWord: generateWord,
-  generateUniqueWord: generateUniqueWord
+  generateWord: generateWord
 }
 
 function generateWordsFromMemoir (memoir, linkLength, maxNumberOfWords, wordsToExclude, random, maxNumberOfAttempts) {
   random = random || Math.random
   maxNumberOfAttempts = maxNumberOfAttempts || maxNumberOfWords * 100
   if (!wordsToExclude.has) wordsToExclude = new Set(wordsToExclude)
+
   const wordsOut = []
   let numberOfAttempts = 0
+
   while (wordsOut.length < maxNumberOfWords && numberOfAttempts < maxNumberOfAttempts) {
-    const word = generateUniqueWord(memoir, linkLength, random, wordsToExclude)
+    const word = generateWord(memoir, linkLength, random)
     numberOfAttempts += 1
-    wordsOut.push(word)
-    wordsToExclude.add(word)
+
+    if (!wordsToExclude.has(word)) {
+      wordsOut.push(word)
+      wordsToExclude.add(word)
+    }
   }
+
   return wordsOut
 }
 
@@ -31,19 +36,6 @@ function calculateNextLetter (wordSoFar, memoir, linkLength, random) {
   }
   const submemoir = findSubmemoir(memoir, link)
   return findLetterInSubmemoir(submemoir, random)
-}
-
-/**
- * @param memoir
- * @param random
- * @param previousWords Set
- */
-function generateUniqueWord (memoir, linkLength, random, previousWords) {
-  for (let i = 100; i; i -= 1) {
-    const word = generateWord(memoir, linkLength, random)
-    if (!previousWords.has(word)) return word
-  }
-  return null
 }
 
 function generateWord (memoir, linkLength, random) {
