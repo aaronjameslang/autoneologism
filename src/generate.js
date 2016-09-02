@@ -24,7 +24,10 @@ function generateWordsFromMemoir (memoir, linkLength, maxNumberOfWords, wordsToE
     }
   }
 
-  return wordsOut
+  return {
+    attempts: numberOfAttempts,
+    words: wordsOut
+  }
 }
 
 function calculateNextLetter (wordSoFar, memoir, linkLength, random) {
