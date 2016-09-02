@@ -14,16 +14,7 @@ function generateNextLetter (wordSoFar, memoir, linkLength, random) {
     link.unshift('START')
   }
   const submemoir = findSubmemoir(memoir, link)
-  const total = submemoir[submemoir.length - 1][1]
-  const index = random() * total
-  let letter = null
-  submemoir.forEach(pair => {
-    if (letter) return
-    if (index < pair[1]) {
-      letter = pair[0]
-    }
-  })
-  return letter
+  return generateLetterFromSubmemoir(submemoir, random())
 }
 
 /**
@@ -49,4 +40,17 @@ function generateWord (memoir, linkLength, random) {
     letter = generateNextLetter(word, memoir, linkLength, random)
   }
   return word
+}
+
+function generateLetterFromSubmemoir (submemoir, random) {
+  const total = submemoir[submemoir.length - 1][1]
+  const index = random * total
+  let letter = null
+  for (let i = 0; i <= submemoir.length; i += 1) {
+    if (index < submemoir[i][1]) {
+      letter = submemoir[i][0]
+      break
+    }
+  }
+  return letter
 }
