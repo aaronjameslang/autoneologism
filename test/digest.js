@@ -1,8 +1,7 @@
-let test = require('tape')
-let incrementSubmemoir = require('../src/digest').incrementSubmemoir
+const test = require('tape')
+const incrementSubmemoir = require('../src/digest')._incrementSubmemoir
 
-test('incrementSubmemoir', t => {
-  [
+  ;[
     {
       memoir: {},
       link: ['d', 'o', 'g'],
@@ -19,7 +18,7 @@ test('incrementSubmemoir', t => {
       expectedMemoir: {'d': {'o': {'g': 1}, 'u': {'g': 1}}}
     }
   ].forEach(fixture => {
-    t.test(
+    test.test(
       'should incrementSubmemoir ' + JSON.stringify(fixture.link),
       t => {
         t.plan(1)
@@ -28,4 +27,3 @@ test('incrementSubmemoir', t => {
       }
     )
   })
-})

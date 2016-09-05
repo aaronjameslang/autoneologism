@@ -2,8 +2,8 @@ const findSubmemoir = require('./findSubmemoir')
 
 module.exports = {
   generateMemoirFromWords: generateMemoirFromWords,
-  digestWord: digestWord,
-  incrementSubmemoir: incrementSubmemoir
+  _digestWord: digestWord,
+  _incrementSubmemoir: incrementSubmemoir
 }
 
 function generateMemoirFromWords (wordsIn, linkLength) {
