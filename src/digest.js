@@ -1,5 +1,3 @@
-const R = require('ramda')
-
 const findSubmemoir = require('./findSubmemoir')
 
 module.exports = {
@@ -23,12 +21,12 @@ function digestWord (memoir, linkLength, word) {
   if (!memoir) throw new Error()
   if (!word) throw new Error('Falsey word: ' + JSON.stringify(word))
   var link = new Array(linkLength).fill('START')
-  R.times(i => {
+  for (let i = 0; i < word.length; i += 1) {
     let letter = word[i]
     link.shift()
     link.push(letter)
     incrementSubmemoir(memoir, link)
-  }, word.length)
+  }
 
   link.shift()
   link.push('END')
@@ -42,8 +40,8 @@ function digestWord (memoir, linkLength, word) {
  */
 function incrementSubmemoir (memoir, link) {
   if (!memoir) throw new Error()
-  const submemoir = findSubmemoir(memoir, R.init(link))
-  const lastLetter = R.last(link)
+  const submemoir = findSubmemoir(memoir, link.slice(0, -1))
+  const lastLetter = link[link.length - 1]
   submemoir[lastLetter] |= 0
   submemoir[lastLetter] += 1
 }
