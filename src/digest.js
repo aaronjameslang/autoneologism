@@ -20,18 +20,13 @@ function generateMemoirFromWords (wordsIn, linkLength) {
 function digestWord (memoir, linkLength, word) {
   if (!memoir) throw new Error()
   if (!word) throw new Error('Falsey word: ' + JSON.stringify(word))
-  var link = new Array(linkLength).fill('START')
-  for (let i = 0; i < word.length; i += 1) {
-    let letter = word[i]
-    link.shift()
-    link.push(letter)
-    incrementSubmemoir(memoir, link)
+  var links = new Array(linkLength - 1)
+    .fill('START', 0, linkLength - 1)
+  links = links.concat(word.split(''))
+  links.push('END')
+  for (let i = 0; i <= word.length; i += 1) {
+    incrementSubmemoir(memoir, links, i, linkLength)
   }
-
-  link.shift()
-  link.push('END')
-
-  incrementSubmemoir(memoir, link)
 }
 
 /**
