@@ -21,6 +21,13 @@ function digestWord (memoir, linkLength, word) {
   if (!memoir) throw new Error()
   if (!word) throw new Error('Falsey word: ' + JSON.stringify(word))
 
+  const links = buildLinksArray(linkLength, word)
+  for (let i = 0; i <= word.length; i += 1) {
+    incrementSubmemoir(memoir, links, i, linkLength)
+  }
+}
+
+function buildLinksArray (linkLength, word) {
   const links = new Array(linkLength + word.length)
   links.fill('START', 0, linkLength - 1) // Start with n-1 'START's
   for (let i = 0; i < word.length; i += 1) {
@@ -28,10 +35,7 @@ function digestWord (memoir, linkLength, word) {
   }
   links[links.length - 1] = 'END' // Then end with a single 'END'
   if (links.length !== linkLength + word.length) throw new Error() // Check array preallocation is correct
-
-  for (let i = 0; i <= word.length; i += 1) {
-    incrementSubmemoir(memoir, links, i, linkLength)
-  }
+  return links
 }
 
 /**
