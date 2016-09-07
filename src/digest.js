@@ -20,9 +20,9 @@ function generateMemoirFromWords (wordsIn, linkLength) {
 function digestWord (memoir, linkLength, word) {
   if (!memoir) throw new Error()
   if (!word) throw new Error('Falsey word: ' + JSON.stringify(word))
-  var links = new Array(linkLength - 1)
+  const links = new Array(linkLength - 1)
     .fill('START', 0, linkLength - 1)
-  links = links.concat(word.split(''))
+    .concat(word.split(''))
   links.push('END')
   for (let i = 0; i <= word.length; i += 1) {
     incrementSubmemoir(memoir, links, i, linkLength)
