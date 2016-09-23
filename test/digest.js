@@ -22,7 +22,7 @@ const incrementSubmemoir = require('../src/digest')._incrementSubmemoir
     'should incrementSubmemoir ' + JSON.stringify(fixture.link),
     t => {
       t.plan(1)
-      incrementSubmemoir(fixture.memoir, fixture.link)
+      incrementSubmemoir(fixture.memoir, fixture.link, 0, fixture.link.length)
       t.deepEqual(fixture.memoir, fixture.expectedMemoir)
     }
   )

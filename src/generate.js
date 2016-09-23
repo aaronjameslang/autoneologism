@@ -32,8 +32,6 @@ function generateWordsFromMemoir (memoir, linkLength, maxNumberOfWords, wordsToE
 }
 
 function calculateNextLetter (wordSoFar, memoir, linkLength, random) {
-  if (typeof wordSoFar !== 'string') throw new Error()
-  if (wordSoFar.length > 100) throw new Error()
   const link = wordSoFar.slice(-linkLength + 1).split('')
   while (link.length < linkLength - 1) {
     link.unshift('START')

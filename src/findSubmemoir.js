@@ -3,6 +3,8 @@ module.exports = findSubmemoir
 /**
  * @param memoir array
  * @param link array
+ * @param offset int
+ * @param length int
  * @returns submemoir array
  */
 function findSubmemoir (memoir, link, offset, length) {
