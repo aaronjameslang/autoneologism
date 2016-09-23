@@ -6,8 +6,6 @@ module.exports = findSubmemoir
  * @returns submemoir array
  */
 function findSubmemoir (memoir, link, offset, length) {
-  offset = offset || 0
-  length = length || link.length
   const end = offset + length
   let submemoir = memoir
   for (let index = offset; index < end; index += 1) {

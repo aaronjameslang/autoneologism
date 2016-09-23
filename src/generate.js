@@ -38,7 +38,7 @@ function calculateNextLetter (wordSoFar, memoir, linkLength, random) {
   while (link.length < linkLength - 1) {
     link.unshift('START')
   }
-  const submemoir = findSubmemoir(memoir, link)
+  const submemoir = findSubmemoir(memoir, link, 0, linkLength - 1)
   return findLetterInSubmemoir(submemoir, random)
 }
 
