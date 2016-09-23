@@ -46,7 +46,7 @@ function getMaximumLinkLength (name) {
 }
 
 function testGenerateMemoirFromWords (name, linkLength) {
-  test('characterise generateMemoirFromWords ' + name, function (t) {
+  test('characterise generateMemoirFromWords ' + name + ' ' + linkLength, function (t) {
     const wordsIn = readWordList(name)
     const memoirPath = path.join(__dirname, name, 'memoir-' + linkLength + '.json')
     const actualMemoir = generateMemoirFromWords(wordsIn, linkLength)
@@ -58,7 +58,7 @@ function testGenerateMemoirFromWords (name, linkLength) {
 }
 
 function testGenerateProcessedMemoirFromMemoir (name, linkLength) {
-  test('characterise processMemoir ' + name, function (t) {
+  test('characterise processMemoir ' + name + ' ' + linkLength, function (t) {
     const memoirPath = path.join(__dirname, name, 'memoir-' + linkLength + '.json')
     const processedMemoirPath = path.join(__dirname, name, 'memoir-processed-' + linkLength + '.json')
     const memoir = require(memoirPath)
@@ -71,7 +71,7 @@ function testGenerateProcessedMemoirFromMemoir (name, linkLength) {
 }
 
 function testGenerateWordsFromMemoir (name, linkLength) {
-  test('characterise generateWordsFromMemoir ' + name, function (t) {
+  test('characterise generateWordsFromMemoir ' + name + '' + linkLength, function (t) {
     const psuedoRandom = PsuedoRandom()
     const wordsIn = readWordList(name)
     const processedMemoirPath = path.join(__dirname, name, 'memoir-processed-' + linkLength + '.json')
