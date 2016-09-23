@@ -16,7 +16,7 @@ const memoir = require('./characterisation/dig-dog-dot-dug/memoir-3')
   test(
     'findSubmemoir ' + JSON.stringify(fixture.memoir) + ' ' + JSON.stringify(fixture.link),
     t => {
-      const actualSubmemoir = findSubmemoir(memoir, fixture.link)
+      const actualSubmemoir = findSubmemoir(memoir, fixture.link, 0, fixture.link.length)
       t.deepEqual(actualSubmemoir, fixture.expectedSubmemoir)
       t.end()
     }
