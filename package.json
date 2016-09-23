@@ -8,6 +8,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
+    "benchmark": "perf stat -r 100 node test/characterisation/characterise.js",
     "build": "npm i &&  npm run format -s && npm run test -s && npm run lint",
     "format": "standard-format --write",
     "lint": "standard --fix",
