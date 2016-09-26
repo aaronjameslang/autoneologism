@@ -41,8 +41,8 @@ function calculateNextLetter (wordSoFar, memoir, linkLength, random) {
 }
 
 function generateWord (memoir, linkLength, random) {
-  var word = ''
-  var letter = ''
+  let word = ''
+  let letter = ''
   while (letter !== 'END') {
     word += letter
     letter = calculateNextLetter(word, memoir, linkLength, random())

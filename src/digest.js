@@ -7,7 +7,7 @@ module.exports = {
 }
 
 function generateMemoirFromWords (wordsIn, linkLength) {
-  let memoir = {}
+  const memoir = {}
   wordsIn.forEach(function (word) {
     digestWord(memoir, linkLength, word)
   })

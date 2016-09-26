@@ -91,7 +91,7 @@ const memoir = require('./characterisation/dig-dog-dot-dug/memoir-processed-3')
   test.test(
     'calculateNextLetter ' + JSON.stringify([fixture.word, fixture.random, fixture.expectedLetter]),
     t => {
-      var actualLetter = calculateNextLetter(fixture.word, memoir, 3, fixture.random)
+      const actualLetter = calculateNextLetter(fixture.word, memoir, 3, fixture.random)
       t.equal(actualLetter, fixture.expectedLetter)
       t.end()
     }
