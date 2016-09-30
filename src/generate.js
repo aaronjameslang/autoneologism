@@ -54,12 +54,7 @@ function generateWord (memoir, linkLength, random) {
 function findLetterInSubmemoir (submemoir, random) {
   const total = submemoir[submemoir.length - 1][1]
   const index = random * total
-  let letter = null
-  for (let i = 0; i <= submemoir.length; i += 1) {
-    if (index < submemoir[i][1]) {
-      letter = submemoir[i][0]
-      break
-    }
-  }
+  for (var i = 0; index >= submemoir[i][1]; i += 1) {}
+  const letter = submemoir[i][0]
   return letter
 }
