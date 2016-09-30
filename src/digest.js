@@ -1,3 +1,4 @@
+const [START, END] = require('./constants')
 const findSubmemoir = require('./findSubmemoir')
 
 module.exports = {
@@ -29,11 +30,11 @@ function digestWord (memoir, linkLength, word) {
 
 function buildLinksArray (linkLength, word, wordLength) {
   const links = new Array(linkLength + wordLength)
-  links.fill('START', 0, linkLength - 1) // Start with n-1 'START's
+  links.fill(START, 0, linkLength - 1) // Start with n-1 'START's
   for (let i = 0; i < wordLength; i += 1) {
     links[linkLength + i - 1] = word[i] // Then add every letter of the word
   }
-  links[links.length - 1] = 'END' // Then end with a single 'END'
+  links[links.length - 1] = END // Then end with a single 'END'
   return links
 }
 

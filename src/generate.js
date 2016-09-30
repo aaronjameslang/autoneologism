@@ -1,3 +1,4 @@
+const [START, END] = require('./constants')
 const findSubmemoir = require('./findSubmemoir')
 
 module.exports = {
@@ -34,7 +35,7 @@ function generateWordsFromMemoir (memoir, linkLength, maxNumberOfWords, wordsToE
 function calculateNextLetter (wordSoFar, memoir, linkLength, random) {
   const link = wordSoFar.slice(-linkLength + 1).split('')
   while (link.length < linkLength - 1) {
-    link.unshift('START')
+    link.unshift(START)
   }
   const submemoir = findSubmemoir(memoir, link, 0, linkLength - 1)
   return findLetterInSubmemoir(submemoir, random)
@@ -43,7 +44,7 @@ function calculateNextLetter (wordSoFar, memoir, linkLength, random) {
 function generateWord (memoir, linkLength, random) {
   let word = ''
   let letter = ''
-  while (letter !== 'END') {
+  while (letter !== END) {
     word += letter
     letter = calculateNextLetter(word, memoir, linkLength, random())
   }
