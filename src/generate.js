@@ -32,15 +32,6 @@ function generateWordsFromMemoir (memoir, linkLength, maxNumberOfWords, wordsToE
   }
 }
 
-function calculateNextLetter (wordSoFar, memoir, linkLength, random) {
-  const link = wordSoFar.slice(-linkLength + 1).split('')
-  while (link.length < linkLength - 1) {
-    link.unshift(START)
-  }
-  const submemoir = findSubmemoir(memoir, link, 0, linkLength - 1)
-  return findLetterInSubmemoir(submemoir, random)
-}
-
 function generateWord (memoir, linkLength, random) {
   let word = ''
   let letter = ''
@@ -49,6 +40,15 @@ function generateWord (memoir, linkLength, random) {
     letter = calculateNextLetter(word, memoir, linkLength, random())
   }
   return word
+}
+
+function calculateNextLetter (wordSoFar, memoir, linkLength, random) {
+  const link = wordSoFar.slice(-linkLength + 1).split('')
+  while (link.length < linkLength - 1) {
+    link.unshift(START)
+  }
+  const submemoir = findSubmemoir(memoir, link, 0, linkLength - 1)
+  return findLetterInSubmemoir(submemoir, random)
 }
 
 function findLetterInSubmemoir (submemoir, random) {
