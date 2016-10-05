@@ -3,8 +3,8 @@ const findSubmemoir = require('./findSubmemoir')
 
 module.exports = {
   generateWordsFromMemoir: generateWordsFromMemoir,
-  calculateNextLetter: calculateNextLetter,
-  generateWord: generateWord
+  _calculateNextLetter: calculateNextLetter,
+  _generateWord: generateWord
 }
 
 function generateWordsFromMemoir (memoir, linkLength, maxNumberOfWords, wordsToExclude, random, maxNumberOfAttempts) {

@@ -1,7 +1,7 @@
 const test = require('tape')
 
-const calculateNextLetter = require('../src/generate').calculateNextLetter
-const generateWord = require('../src/generate').generateWord
+const calculateNextLetter = require('../src/generate')._calculateNextLetter
+const generateWord = require('../src/generate')._generateWord
 
 const memoir = require('./characterisation/dig-dog-dot-dug/memoir-processed-3')
 
