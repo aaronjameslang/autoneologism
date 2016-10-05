@@ -3,7 +3,6 @@ const findSubmemoir = require('./findSubmemoir')
 
 module.exports = {
   generateMemoirFromWords: generateMemoirFromWords,
-  _digestWord: digestWord,
   _incrementSubmemoir: incrementSubmemoir
 }
 
