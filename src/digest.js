@@ -40,14 +40,14 @@ function buildLinksArray (linkLength, word, wordLength) {
 
 /**
  * @param memoir array The memoir
- * @param link array The link describing the submemoir to be incremented
- * @param offset int
- * @param length int
+ * @param links array The array containing the link describing the submemoir to be incremented
+ * @param offset int The position of the link within the links array
+ * @param length int The length of the link
  */
-function incrementSubmemoir (memoir, link, offset, length) {
-  const submemoir = findSubmemoir(memoir, link, offset, length - 1)
+function incrementSubmemoir (memoir, links, offset, length) {
+  const submemoir = findSubmemoir(memoir, links, offset, length - 1)
   const end = offset + length - 1
-  const lastLetter = link[end]
+  const lastLetter = links[end]
   submemoir[lastLetter] |= 0
   submemoir[lastLetter] += 1
 }
