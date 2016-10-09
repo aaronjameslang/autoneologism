@@ -42,18 +42,18 @@ function generateWord (memoir, linkLength, random) {
   return word
 }
 
-function calculateNextLetter (wordSoFar, memoir, linkLength, random) {
+function calculateNextLetter (wordSoFar, memoir, linkLength, index) {
   const link = wordSoFar.slice(-linkLength + 1).split('')
   while (link.length < linkLength - 1) {
     link.unshift(START)
   }
   const submemoir = findSubmemoir(memoir, link, 0, linkLength - 1)
-  return findLetterInSubmemoir(submemoir, random)
+  return findLetterInSubmemoir(submemoir, index)
 }
 
-function findLetterInSubmemoir (submemoir, random) {
+function findLetterInSubmemoir (submemoir, index) {
   const total = submemoir[submemoir.length - 1][1]
-  const index = random * total
+  index *= total
   for (var i = 0; index >= submemoir[i][1]; i += 1) {}
   const letter = submemoir[i][0]
   return letter
