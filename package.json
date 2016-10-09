@@ -18,7 +18,7 @@
     "test": "npm run test-debug -s | faucet",
     "test-debug": "tape test/*.js test/**/*.js",
     "test-quick": "QUICK=true npm run test -s",
-    "update": "npm update && npm shrinkwrap --dev"
+    "update": "npm update && npm shrinkwrap --dev && npm outdated"
   },
   "devDependencies": {
     "faucet": "0.0.1",
