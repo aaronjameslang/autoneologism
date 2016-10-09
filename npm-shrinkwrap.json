@@ -27,9 +27,9 @@
       "dev": true
     },
     "ajv": {
-      "version": "4.7.5",
+      "version": "4.7.7",
       "from": "ajv@>=4.7.0 <5.0.0",
-      "resolved": "https://registry.npmjs.org/ajv/-/ajv-4.7.5.tgz",
+      "resolved": "https://registry.npmjs.org/ajv/-/ajv-4.7.7.tgz",
       "dev": true
     },
     "ajv-keywords": {
@@ -745,9 +745,9 @@
       "dev": true
     },
     "globals": {
-      "version": "9.10.0",
+      "version": "9.11.0",
       "from": "globals@>=9.2.0 <10.0.0",
-      "resolved": "https://registry.npmjs.org/globals/-/globals-9.10.0.tgz",
+      "resolved": "https://registry.npmjs.org/globals/-/globals-9.11.0.tgz",
       "dev": true
     },
     "globby": {
@@ -800,7 +800,7 @@
     },
     "inherits": {
       "version": "2.0.3",
-      "from": "inherits@>=2.0.1 <2.1.0",
+      "from": "inherits@>=2.0.3 <2.1.0",
       "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.3.tgz",
       "dev": true
     },
@@ -841,9 +841,9 @@
       "dev": true
     },
     "is-my-json-valid": {
-      "version": "2.14.0",
+      "version": "2.15.0",
       "from": "is-my-json-valid@>=2.10.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/is-my-json-valid/-/is-my-json-valid-2.14.0.tgz",
+      "resolved": "https://registry.npmjs.org/is-my-json-valid/-/is-my-json-valid-2.15.0.tgz",
       "dev": true,
       "dependencies": {
         "xtend": {
@@ -939,9 +939,9 @@
       "dev": true
     },
     "jsonpointer": {
-      "version": "2.0.0",
-      "from": "jsonpointer@2.0.0",
-      "resolved": "https://registry.npmjs.org/jsonpointer/-/jsonpointer-2.0.0.tgz",
+      "version": "4.0.0",
+      "from": "jsonpointer@>=4.0.0 <5.0.0",
+      "resolved": "https://registry.npmjs.org/jsonpointer/-/jsonpointer-4.0.0.tgz",
       "dev": true
     },
     "jsx-ast-utils": {
@@ -1236,7 +1236,7 @@
     },
     "resolve": {
       "version": "1.1.7",
-      "from": "resolve@>=1.1.5 <2.0.0",
+      "from": "resolve@>=1.1.7 <1.2.0",
       "resolved": "https://registry.npmjs.org/resolve/-/resolve-1.1.7.tgz",
       "dev": true
     },
@@ -1376,7 +1376,7 @@
     },
     "standard": {
       "version": "7.1.2",
-      "from": "standard@>=7.1.2 <8.0.0",
+      "from": "standard@7.1.2",
       "resolved": "https://registry.npmjs.org/standard/-/standard-7.1.2.tgz",
       "dev": true
     },
@@ -1394,7 +1394,7 @@
         },
         "xtend": {
           "version": "4.0.1",
-          "from": "xtend@>=4.0.0 <5.0.0",
+          "from": "xtend@^4.0.0",
           "resolved": "https://registry.npmjs.org/xtend/-/xtend-4.0.1.tgz",
           "dev": true
         }
@@ -1496,7 +1496,7 @@
     },
     "tape": {
       "version": "4.6.2",
-      "from": "tape@>=4.6.0 <5.0.0",
+      "from": "https://registry.npmjs.org/tape/-/tape-4.6.2.tgz",
       "resolved": "https://registry.npmjs.org/tape/-/tape-4.6.2.tgz",
       "dev": true,
       "dependencies": {
@@ -1528,7 +1528,7 @@
     },
     "through": {
       "version": "2.3.8",
-      "from": "through@>=2.3.4 <2.4.0",
+      "from": "through@>=2.3.8 <2.4.0",
       "resolved": "https://registry.npmjs.org/through/-/through-2.3.8.tgz",
       "dev": true
     },
