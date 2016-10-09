@@ -6,6 +6,7 @@ const execSync = require('child_process').execSync
 const generateMemoirFromWords = require('../../index').generateMemoirFromWords
 const processMemoir = require('../../index').processMemoir
 const generateWordsFromMemoir = require('../../index').generateWordsFromMemoir
+const generateWords = require('../../index').generateWords
 
 const PsuedoRandom = require('../_support/pseudo-random')
 
@@ -31,6 +32,7 @@ function processDirectory (name) {
     testGenerateMemoirFromWords(name, linkLength)
     testGenerateProcessedMemoirFromMemoir(name, linkLength)
     testGenerateWordsFromMemoir(name, linkLength)
+    testGenerateWords(name, linkLength)
   }
 }
 
@@ -79,6 +81,18 @@ function testGenerateWordsFromMemoir (name, linkLength) {
     const processedMemoir = require(processedMemoirPath)
     const actualWordsOut = generateWordsFromMemoir(processedMemoir, linkLength, 100, wordsIn, psuedoRandom)
     if (REGENERATE) writeJsonFile(wordsOutPath, actualWordsOut)
+    const expectedWordsOut = require(wordsOutPath)
+    t.deepEqual(actualWordsOut, expectedWordsOut)
+    t.end()
+  })
+}
+
+function testGenerateWords (name, linkLength) {
+  test('characterise generateWords ' + name + '' + linkLength, function (t) {
+    const wordsIn = readWordList(name)
+    const psuedoRandom = PsuedoRandom()
+    const actualWordsOut = generateWords(wordsIn, linkLength, 100, null, psuedoRandom)
+    const wordsOutPath = path.join(__dirname, name, 'words-out-' + linkLength + '.json')
     const expectedWordsOut = require(wordsOutPath)
     t.deepEqual(actualWordsOut, expectedWordsOut)
     t.end()
