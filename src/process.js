@@ -13,7 +13,7 @@ function processMemoir (memoir) {
     } else {
       newMemoir = newMemoir || []
       runnningTotal += memoir[letter]
-      newMemoir.push([letter, runnningTotal])
+      newMemoir.push(runnningTotal, letter)
     }
   }
 

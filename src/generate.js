@@ -52,9 +52,9 @@ function calculateNextLetter (wordSoFar, memoir, linkLength, index) {
 }
 
 function findLetterInMemoirLeaf (memoirLeaf, index) {
-  const total = memoirLeaf[memoirLeaf.length - 1][1]
+  const total = memoirLeaf[memoirLeaf.length - 2]
   index *= total
-  for (var i = 0; index >= memoirLeaf[i][1]; i += 1) {}
-  const letter = memoirLeaf[i][0]
+  for (var i = 0; index >= memoirLeaf[i]; i += 2) {}
+  const letter = memoirLeaf[i + 1]
   return letter
 }
