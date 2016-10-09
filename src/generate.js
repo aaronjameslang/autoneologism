@@ -47,14 +47,14 @@ function calculateNextLetter (wordSoFar, memoir, linkLength, index) {
   while (link.length < linkLength - 1) {
     link.unshift(START)
   }
-  const submemoir = findSubmemoir(memoir, link, 0, linkLength - 1)
-  return findLetterInSubmemoir(submemoir, index)
+  const memoirLeaf = findSubmemoir(memoir, link, 0, linkLength - 1)
+  return findLetterInMemoirLeaf(memoirLeaf, index)
 }
 
-function findLetterInSubmemoir (submemoir, index) {
-  const total = submemoir[submemoir.length - 1][1]
+function findLetterInMemoirLeaf (memoirLeaf, index) {
+  const total = memoirLeaf[memoirLeaf.length - 1][1]
   index *= total
-  for (var i = 0; index >= submemoir[i][1]; i += 1) {}
-  const letter = submemoir[i][0]
+  for (var i = 0; index >= memoirLeaf[i][1]; i += 1) {}
+  const letter = memoirLeaf[i][0]
   return letter
 }

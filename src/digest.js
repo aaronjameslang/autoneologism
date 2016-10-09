@@ -45,9 +45,9 @@ function buildLinksArray (linkLength, word, wordLength) {
  * @param length int The length of the link
  */
 function incrementSubmemoir (memoir, links, offset, length) {
-  const submemoir = findSubmemoir(memoir, links, offset, length - 1)
+  const leafMemoir = findSubmemoir(memoir, links, offset, length - 1)
   const end = offset + length - 1
   const lastLetter = links[end]
-  submemoir[lastLetter] |= 0
-  submemoir[lastLetter] += 1
+  leafMemoir[lastLetter] |= 0
+  leafMemoir[lastLetter] += 1
 }
