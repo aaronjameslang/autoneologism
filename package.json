@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "A word generator that teaches itself your phonotactics",
   "author": "aaronjameslang@googlemail.com",
-  "repository": "github.com/aaronjameslang/autoneologism",
+  "repository": "https://github.com/aaronjameslang/autoneologism",
   "license": "UNLICENSED",
   "main": "index.js",
   "scripts": {
