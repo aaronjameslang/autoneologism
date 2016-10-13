@@ -1,9 +1,9 @@
 {
-  "name": "learning-word-generator",
-  "version": "1.0.0",
+  "name": "autoneologism",
+  "version": "0.0.1",
   "description": "A word generator that teaches itself your phonotactics",
   "author": "aaronjameslang@googlemail.com",
-  "repository": "ajl7c7.com:learning-word-generator.git",
+  "repository": "github.com/aaronjameslang/autoneologism",
   "license": "UNLICENSED",
   "private": true,
   "main": "index.js",
