@@ -5,7 +5,6 @@
   "author": "aaronjameslang@googlemail.com",
   "repository": "github.com/aaronjameslang/autoneologism",
   "license": "UNLICENSED",
-  "private": true,
   "main": "index.js",
   "scripts": {
     "benchmark": "perf stat -r 100 node test/characterisation/generateWords.js",
