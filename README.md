@@ -1,4 +1,4 @@
-# autoneologism
+# autoneologism [![Build Status](https://travis-ci.org/aaronjameslang/autoneologism.svg?branch=develop)](https://travis-ci.org/aaronjameslang/autoneologism)
 A word generator that teaches itself your phonotactics
 
 ## Example Usage
