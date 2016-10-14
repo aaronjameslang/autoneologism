@@ -1,6 +1,6 @@
 {
   "name": "autoneologism",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A word generator that teaches itself your phonotactics",
   "author": "aaronjameslang@googlemail.com",
   "repository": "https://github.com/aaronjameslang/autoneologism",
