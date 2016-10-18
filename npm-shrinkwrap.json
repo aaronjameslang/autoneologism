@@ -1,5 +1,5 @@
 {
-  "name": "learning-word-generator",
+  "name": "autoneologism",
   "version": "0.0.5",
   "dependencies": {
     "abbrev": {
