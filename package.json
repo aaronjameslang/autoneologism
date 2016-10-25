@@ -10,6 +10,7 @@
     "benchmark": "perf stat -r 100 node test/characterisation/generateWords.js",
     "build": "npm i &&  npm run format -s && npm run test -s && npm run lint",
     "format": "standard-format --write",
+    "jsdoc": "jsdoc --recurse index.js src",
     "lint": "standard --fix",
     "profile": "REPEAT=100 node --prof test/characterisation/generateWords.js && npm run -s profile-view ",
     "profile-view": "node --prof-process $(ls -t isolate-0x*-v8.log | head -1) | less",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "faucet": "^0.0.1",
+    "jsdoc": "^3.4.2",
     "standard": "^8.3.0",
     "standard-format": "^2.2.2",
     "tape": "^4.6.0"
