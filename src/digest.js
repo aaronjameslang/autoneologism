@@ -6,6 +6,13 @@ module.exports = {
   _incrementSubmemoir: incrementSubmemoir
 }
 
+/**
+ * Generate a memoir from a list of input words
+ * The memoir can later be used to generate output words
+ * @param {array} wordsIn
+ * @param {int} linkLength
+ * @returns {object} memoir
+ */
 function generateMemoirFromWords (wordsIn, linkLength) {
   const memoir = {}
   wordsIn.forEach(function (word) {
@@ -15,9 +22,10 @@ function generateMemoirFromWords (wordsIn, linkLength) {
 }
 
 /**
- * @param memoir Array
- * @param linkLength Int
- * @param word String
+ * Take a memoir, and mutate it according to the decomposition of the word
+ * @param {object} memoir This is mutated
+ * @param {int} linkLength
+ * @param {string} word
  */
 function digestWord (memoir, linkLength, word) {
   const wordLength = word.length
@@ -27,6 +35,13 @@ function digestWord (memoir, linkLength, word) {
   }
 }
 
+/**
+ * Convert a word into an array, from which links can be specified
+ * @param {int} linkLength
+ * @param {string} word
+ * @param {int} wordLength
+ * @returns {array}
+ */
 function buildLinksArray (linkLength, word, wordLength) {
   const linkLengthMinusOne = linkLength - 1
   const links = new Array(linkLength + wordLength)
@@ -39,10 +54,11 @@ function buildLinksArray (linkLength, word, wordLength) {
 }
 
 /**
- * @param memoir array The memoir
- * @param links array The array containing the link describing the submemoir to be incremented
- * @param offset int The position of the link within the links array
- * @param length int The length of the link
+ * Taking a memoir, and information to specify a leaf of it, increment that leaf
+ * @param {array} memoir
+ * @param {array} links The array containing the link describing the submemoir to be incremented
+ * @param {int} offset The position of the link within the links array
+ * @param {int} length The length of the link
  */
 function incrementSubmemoir (memoir, links, offset, length) {
   const leafMemoir = findSubmemoir(memoir, links, offset, length - 1)
