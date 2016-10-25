@@ -5,6 +5,13 @@
         "promise"
     ],
     "rules": {
-        "valid-jsdoc": "error"
+        "valid-jsdoc": [
+            "error",
+            {
+                "requireParamDescription": false,
+                "requireReturnDescription": false,
+                "requireReturn": false
+            }
+        ]
     }
 }
