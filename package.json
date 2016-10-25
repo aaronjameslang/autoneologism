@@ -8,10 +8,10 @@
   "main": "index.js",
   "scripts": {
     "benchmark": "perf stat -r 100 node test/characterisation/generateWords.js",
-    "build": "npm i &&  npm run format -s && npm run test -s && npm run lint",
-    "format": "standard-format --write",
+    "build": "npm i && npm shrinkwrap --dev &&  npm run fix -s && npm run test -s && npm run lint",
+    "fix": "eslint --fix .",
     "jsdoc": "jsdoc --recurse index.js src",
-    "lint": "standard --fix",
+    "lint": "eslint .",
     "profile": "REPEAT=100 node --prof test/characterisation/generateWords.js && npm run -s profile-view ",
     "profile-view": "node --prof-process $(ls -t isolate-0x*-v8.log | head -1) | less",
     "regenerate": "rm -f test/characterisation/*/*.json && REGENERATE=true tape test/characterisation/util.js",
@@ -21,10 +21,12 @@
     "update": "npm update && npm shrinkwrap --dev && npm outdated"
   },
   "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-config-standard": "^6.2.0",
+    "eslint-plugin-promise": "^3.0.0",
+    "eslint-plugin-standard": "^2.0.1",
     "faucet": "^0.0.1",
     "jsdoc": "^3.4.2",
-    "standard": "^8.3.0",
-    "standard-format": "^2.2.2",
     "tape": "^4.6.0"
   }
 }
