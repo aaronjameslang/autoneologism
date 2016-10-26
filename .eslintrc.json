@@ -12,6 +12,7 @@
                 "requireReturnDescription": false,
                 "requireReturn": false
             }
-        ]
+        ],
+        "require-jsdoc": "warn"
     }
 }
