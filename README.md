@@ -9,17 +9,17 @@ A word generator that teaches itself your phonotactics
 
 
 ```js
-> require('autoneologism').generateWords(['another', 'open', 'penmanship', 'answer'], 3, 100)
+> require('autoneologism').generateWords(['another', 'open', 'penmanship', 'answer'])
 { attempts: 10000,
   efficiency: 0.0007,
   words:
-   [ 'penmanother',
+   [ 'openmanship',
      'anship',
-     'openmanother',
+     'penmanother',
+     'penmanswer',
      'pen',
      'openmanswer',
-     'openmanship',
-     'penmanswer' ] }
+     'openmanother' ] }
 ```
 
 ## Development

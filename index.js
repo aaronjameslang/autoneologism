@@ -3,6 +3,7 @@ const processMemoir = require('./src/process').processMemoir
 const generateWordsFromMemoir = require('./src/generate').generateWordsFromMemoir
 
 function generateWords (wordsIn, linkLength, maxNumberOfWords, wordsToExclude, random, maxNumberOfAttempts) {
+  linkLength = linkLength || 3
   wordsToExclude = wordsToExclude || wordsIn
   const memoir = generateMemoirFromWords(wordsIn, linkLength)
   const processedMemoir = processMemoir(memoir)
