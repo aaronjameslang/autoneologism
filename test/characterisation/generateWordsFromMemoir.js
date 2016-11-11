@@ -7,7 +7,7 @@ util.test((name, linkLength, test) => {
     const psuedoRandom = PsuedoRandom()
     const wordsIn = util.getWordsIn(name)
     const processedMemoir = util.getProcessedMemoir(name, linkLength)
-    const actualWordsOut = generateWordsFromMemoir(processedMemoir, linkLength, 100, wordsIn, psuedoRandom)
+    const actualWordsOut = generateWordsFromMemoir(processedMemoir, linkLength, null, wordsIn, psuedoRandom)
     if (util.REGENERATE) util.setWordsOut(name, linkLength, actualWordsOut)
     const expectedWordsOut = util.getWordsOut(name, linkLength)
     t.deepEqual(actualWordsOut, expectedWordsOut)
