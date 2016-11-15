@@ -6,7 +6,7 @@ const generateWordsFromMemoir = require('./src/generate').generateWordsFromMemoi
  * Generate words like the words passed in
  *
  * @param {string[]} wordsIn Words to base the output on
- * @param {int} linkLength Minimum 2, larger numbers will make the output more closely match the input
+ * @param {int} linkLength Minimum 2, larger numbers will make the output more closely match the input, default 3
  * @param {int} maxNumberOfWords The number of words to output, generation may stop before this if maxNumberOfAttempts is reached
  * @param {string[]} [wordsToExclude] Words to include from the output, can be empty, default is wordsIn
  * @param {function} [random] Function returning ints between 0 and 1, default is Math.random
