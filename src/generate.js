@@ -8,6 +8,7 @@ module.exports = {
 }
 
 function generateWordsFromMemoir (memoir, linkLength, maxNumberOfWords, wordsToExclude, random, maxNumberOfAttempts) {
+  maxNumberOfWords = maxNumberOfWords || 100
   random = random || Math.random
   maxNumberOfAttempts = maxNumberOfAttempts || maxNumberOfWords * 100
   if (!wordsToExclude.has) wordsToExclude = new Set(wordsToExclude)
