@@ -6,11 +6,11 @@ module.exports = findSubmemoir
  * Using the link it navigates the memoir and
  *   returns the submemoir it finds
  *
- * @param memoir array
- * @param links array
- * @param offset int
- * @param length int
- * @returns submemoir array
+ * @param {array} memoir
+ * @param {array} links
+ * @param {int} offset
+ * @param {int} length
+ * @returns {array} submemoir
  */
 function findSubmemoir (memoir, links, offset, length) {
   const end = offset + length
