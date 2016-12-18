@@ -9,6 +9,7 @@
   "scripts": {
     "benchmark": "perf stat -r 100 node test/characterisation/generateWords.js",
     "build": "npm i && npm shrinkwrap --dev &&  npm run fix -s && npm run test -s && npm run lint",
+    "clean": "< .gitignore xargs -I% sh -c \"rm -rf %\"",
     "fix": "eslint --fix .",
     "jsdoc": "jsdoc --recurse index.js src",
     "lint": "eslint .",
