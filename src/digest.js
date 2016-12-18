@@ -26,6 +26,7 @@ function generateMemoirFromWords (wordsIn, linkLength) {
  * @param {object} memoir This is mutated
  * @param {int} linkLength
  * @param {string} word
+ * @returns {undefined}
  */
 function digestWord (memoir, linkLength, word) {
   const wordLength = word.length
@@ -55,10 +56,11 @@ function buildLinksArray (linkLength, word, wordLength) {
 
 /**
  * Taking a memoir, and information to specify a leaf of it, increment that leaf
- * @param {array} memoir
+ * @param {array} memoir This is mutated
  * @param {array} links The array containing the link describing the submemoir to be incremented
  * @param {int} offset The position of the link within the links array
  * @param {int} length The length of the link
+ * @returns {undefined}
  */
 function incrementSubmemoir (memoir, links, offset, length) {
   const leafMemoir = findSubmemoir(memoir, links, offset, length - 1)

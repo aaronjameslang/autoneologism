@@ -9,8 +9,7 @@
             "error",
             {
                 "requireParamDescription": false,
-                "requireReturnDescription": false,
-                "requireReturn": false
+                "requireReturnDescription": false
             }
         ],
         "require-jsdoc": "error"
