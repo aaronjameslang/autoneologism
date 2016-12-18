@@ -13,6 +13,6 @@
                 "requireReturn": false
             }
         ],
-        "require-jsdoc": "warn"
+        "require-jsdoc": "error"
     }
 }
