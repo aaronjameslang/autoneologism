@@ -2,7 +2,6 @@
 
 const fs = require('fs')
 const path = require('path')
-const execSync = require('child_process').execSync
 const tape = require('tape')
 
 const REGENERATE = !!process.env.REGENERATE
@@ -44,8 +43,7 @@ function processDirectory (test, name) {
 
 function getMaximumLinkLength (name) {
   const wordsInPath = getWordsInPath(name)
-  const command = 'wc -l ' + wordsInPath
-  const wordsInCount = Number(String(execSync(command)).split(' ')[0])
+  const wordsInCount = fs.readFileSync(wordsInPath).toString().split('\n').length
   if (wordsInCount < 1000) {
     return 5
   } else {
