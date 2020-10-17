@@ -6,7 +6,7 @@ const memoir = require('./characterisation/dig-dog-dot-dug/memoir-3')
 ;[
   {
     link: ['START', 'START'],
-    expectedSubmemoir: {d: 4}
+    expectedSubmemoir: { d: 4 }
   },
   {
     link: ['START', 'START', 'd'],

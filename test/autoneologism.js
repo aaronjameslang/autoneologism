@@ -6,7 +6,7 @@ const anl = require('..')
 ;[
   {
     wordsIn: ['another', 'open', 'penmanship', 'answer'],
-    expectedOut: { attempts: 10000, efficiency: 0.0007, words: [ 'openmanship', 'anship', 'penmanother', 'penmanswer', 'pen', 'openmanswer', 'openmanother' ] }
+    expectedOut: { attempts: 10000, efficiency: 0.0007, words: ['openmanship', 'anship', 'penmanother', 'penmanswer', 'pen', 'openmanswer', 'openmanother'] }
   }
 ].forEach(fixture => {
   test.test(
